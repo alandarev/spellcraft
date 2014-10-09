@@ -11,5 +11,46 @@
  * =====================================================================================
  */
 
+/**
+ * External libraries
+ */
+
+#pragma semicolon 1
+#define SPELLCRAFT_VERSION "0.1"
+/**
+ * Declarations
+ */
+
+/**
+ * Engine
+ */
+
+/**
+ * Content
+ */
+
+public Plugin:myinfo =
+{
+  name = "SpellCraft",
+  author = "Check at GitHub",
+  description = "RPG mod, allows players to craft their own spells and use in-game.",
+  version = SPELLCRAFT_VERSION,
+  url = "https://github.com/alandarev/spellcraft"
+};
+
+public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
+{
+  PrintToServer("----------------|      SpellCraft Load Stage 1    |---------------");
+  return APLRes_Success;
+}
+
+public void OnPluginStart() {
+  PrintToServer("----------------|      SpellCraft Load Stage 2    |---------------");
+}
+
+public void OnConfigsExecuted() {
+  PrintToServer("----------------|      SpellCraft Config Loaded   |---------------");
+}
+
 int test;
 
