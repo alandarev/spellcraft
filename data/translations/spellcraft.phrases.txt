@@ -1,0 +1,7 @@
+"Phrases"
+{
+  "spellcraft"
+  {
+    "en"  "SpellCraft"
+  }
+}
