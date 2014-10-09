@@ -1,7 +1,7 @@
 spellcraft
 ==========
 
-I am thrilling to let you know that our small team of wowmod developers decided to work on a different RPG-like mod for CS:GO called **SpellCraft**
+I am thrilled to let you know that our small team of wowmod developers decided to work on a different RPG-like mod for CS:GO called **SpellCraft**
 
 ## Structure of a repository
 
