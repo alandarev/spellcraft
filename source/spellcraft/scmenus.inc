@@ -5,35 +5,33 @@
 
 public ExampleMenu(client) { //RENAME
 
-  new Handle:menu=CreateMenu(ExampleMenuHandler); //EDIT !!
-  SetMenuExitBackButton(menu,true);
+  Menu menu = Menu(ExampleMenuHandler); // EDIT the Handler name
+  menu.ExitBackButton = true;
 
   /*** Title ***/
-  decl String:title[128];
+  char title[128];
   Format(title,sizeof(title),"%T","sc menu title",client);
-  SetMenuTitle(menu,title);
-
+  menu.SetTitle(title);
 
   /*** Menu Items ***/
-  decl String:buffer[200];
+  char buffer[200];
   Format(buffer, sizeof(buffer), "%T", "My menu item", client);
-  AddMenuItem(menu,"meta-data",buffer,ITEMDRAW_DISABLED);
-  AddMenuItem(menu,"meta-data",buffer);
+  menu.AddItem("meta-data", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
 
   /*** Example of Menu Item with meta-data as function with 'client'. ***/
   /*** Use it as preferred method for menus which do not need more info than clien ***/
   /*
   Format(buffer,sizeof(buffer),"%T","sc auction",client);
-  AddMenuItem(menu,"AuctionsMenu",buffer);
+  menu.AddItem("AuctionsMenu",buffer);
   */
 
   /*** Send to client ***/
-  DisplayMenu(menu,client,MENU_TIME_FOREVER);
+  menu.Display(client,MENU_TIME_FOREVER);
 
 }
 
-public ExampleMenuHandler(Handle:menu, //rename
-                        MenuAction:action,
+public ExampleMenuHandler(Menu menu, //rename
+                        MenuAction action,
                         client, slot) {
   if(action == MenuAction_Select) {
     //insert here
@@ -41,17 +39,17 @@ public ExampleMenuHandler(Handle:menu, //rename
     /*** Comment out to treat meta-data as functions with 'client' argument ***/
     /*
 
-    decl String:buffer[100];
-    GetMenuItem(menu,slot,buffer,sizeof(buffer));
+    char buffer[100];
+    menu.GetItem(menu,slot,buffer,sizeof(buffer));
 
     //Call function
-    new Function:func = GetFunctionByName(INVALID_HANDLE, buffer);
+    Function func = GetFunctionByName(INVALID_HANDLE, buffer);
     Call_StartFunction(INVALID_HANDLE, func);
     Call_PushCell(client);
     if(Call_Finish() != SP_ERROR_NONE)  {
-      decl String:err[100];
-      Format(err,100,"Could not callback the function: %s",buffer);
-      Logger_log(LogType:LT_file, LogLevel:LL_error, "Messages", err);
+      char err[100];
+      Format(err,100,"[SC] Could not callback the function: %s",buffer);
+      LogError(err);
     }
 
     */
@@ -62,7 +60,7 @@ public ExampleMenuHandler(Handle:menu, //rename
       //Go previous menu?
     }
   if(action == MenuAction_End)
-    CloseHandle(menu);
+    delete menu;
 
 }
 
