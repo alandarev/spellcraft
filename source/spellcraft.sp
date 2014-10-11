@@ -22,6 +22,7 @@
 /**
  * Engine
  */
+#include "spellcraft/player"
 #include "spellcraft/scmenus"
 
 /**
@@ -54,6 +55,12 @@ public void OnPluginStart() {
   RegConsoleCmd("menu", Open_MainMenu);
   RegConsoleCmd("wcmenu", Open_MainMenu);
   RegConsoleCmd("scmenu", Open_MainMenu);
+
+  // Some testing
+  Player myPlayer = Player(1);
+  PrintToServer("Player a = %d", myPlayer);
+  int[] tests = {5, 6, 7};
+  PrintToServer("Test = %d", tests[myPlayer]);
 }
 
 public void OnConfigsExecuted() {
