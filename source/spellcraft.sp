@@ -47,7 +47,7 @@ public void OnPluginStart() {
   PrintToServer("----------------|      SpellCraft Load Stage 2    |---------------");
 
   PrintToServer("translations file loading");
-  LoadTranslations("spellcraft.phrases2");
+  LoadTranslations("spellcraft.phrases");
 
   //Console commands
   //All of the following open the main menu:
