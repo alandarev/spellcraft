@@ -4,4 +4,28 @@
   {
     "en"  "SpellCraft"
   }
+  "sc main menu title"
+  {
+    "en"  "SpellCraft Menu"
+  }
+  "sc hero menu"
+  {
+    "en"  "Hero Menu"
+  }
+  "sc backpack menu"
+  {
+    "en"  "Backpack Menu"
+  }
+  "sc premium menu"
+  {
+    "en"  "Premium"
+  }
+  "sc other players menu"
+  {
+    "en"  "Other Players"
+  }
+  "sc help menu"
+  {
+    "en"  "Help"
+  }
 }

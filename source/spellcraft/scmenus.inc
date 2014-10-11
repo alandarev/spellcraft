@@ -40,7 +40,7 @@ public ExampleMenuHandler(Menu menu, //rename
     /*
 
     char buffer[100];
-    menu.GetItem(menu,slot,buffer,sizeof(buffer));
+    menu.GetItem(slot,buffer,sizeof(buffer));
 
     //Call function
     Function func = GetFunctionByName(INVALID_HANDLE, buffer);
@@ -65,19 +65,83 @@ public ExampleMenuHandler(Menu menu, //rename
 }
 
 
+// Main Menu using the ExampleMenu template
 
-public Action:Open_MainMenu(client, args) //Args is necessary for console commands even if it doesn't do anything
-{
-	if (client)
-	{
-    OpenMenu(client);
-	} else {
-		PrintToServer("The server cannot open menu.");
-	}
+void MainMenu(client) {
 
-	return Plugin_Handled;
+  Menu menu = Menu(MainMenuHandler);
+  menu.ExitBackButton = true;
+
+  /*** Title ***/
+  char title[128];
+  Format(title,sizeof(title),"%T","sc main menu title",client);
+  menu.SetTitle(title);
+
+  /*** Menu Items ***/
+  char buffer[200];
+  Format(buffer, sizeof(buffer), "%T", "sc hero menu", client);
+  menu.AddItem("HeroMenu", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
+
+  Format(buffer, sizeof(buffer), "%T", "sc backpack menu", client);
+  menu.AddItem("BackpackMenu", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
+
+  Format(buffer, sizeof(buffer), "%T", "sc premium menu", client);
+  menu.AddItem("PremiumMenu", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
+
+  Format(buffer, sizeof(buffer), "%T", "sc other players menu", client);
+  menu.AddItem("OtherPlayersMenu", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
+
+  Format(buffer, sizeof(buffer), "%T", "sc help menu", client);
+  menu.AddItem("HelpMenu", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
+
+  /*** Send to client ***/
+  menu.Display(client,MENU_TIME_FOREVER);
+
 }
 
+public MainMenuHandler(Menu menu,
+                        MenuAction action,
+                        client, slot) {
+  if(action == MenuAction_Select) {
+    char buffer[100];
+    menu.GetItem(slot,buffer,sizeof(buffer));
+
+    //Call function
+    Function func = GetFunctionByName(INVALID_HANDLE, buffer);
+    Call_StartFunction(INVALID_HANDLE, func);
+    Call_PushCell(client);
+    if(Call_Finish() != SP_ERROR_NONE)  {
+      char err[100];
+      Format(err,100,"[SC] Could not callback the function: %s",buffer);
+      LogError(err);
+    }
+
+  }
+
+  if(action == MenuAction_Cancel)
+    if(slot == MenuCancel_ExitBack) {
+      //Go previous menu?
+    }
+  if(action == MenuAction_End)
+    delete menu;
+}
+
+
+
+public Action:Open_MainMenu(client, args)
+{
+  if (client)
+  {
+    MainMenu(client);
+  }
+  else
+  {
+    PrintToServer("The server cannot open menu.");
+  }
+  return Plugin_Handled;
+}
+
+/*
 OpenMenu(client)
 {
   //new Handle:menu = CreateMenu(MainMenu, MenuAction_Select | MenuAction_End | MenuAction_DisplayItem);
@@ -175,3 +239,4 @@ public MainMenu(Handle:menu, MenuAction:action, param1, param2)
 	}
 	return 0;
 }
+        */
