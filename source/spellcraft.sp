@@ -46,7 +46,7 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 public void OnPluginStart() {
   PrintToServer("----------------|      SpellCraft Load Stage 2    |---------------");
 
-  LoadTranslations("spellcraft.phrases");
+  LoadTranslations("spellcraft.phrases2");
 
   //Console commands
   //All of the following open the main menu:
