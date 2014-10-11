@@ -17,13 +17,13 @@ OpenMenu(client)
 {
 	new Handle:menu = CreateMenu(Test, MenuAction_Select | MenuAction_End | MenuAction_DisplayItem);
 	SetMenuTitle(menu, "Menu");
-  
+
   AddMenuItem(menu, "Items", "Items");
   AddMenuItem(menu, "Spells", "Spells");
   AddMenuItem(menu, "Characters", "Characters");
   AddMenuItem(menu, "Other Players", "Other Players");
   AddMenuItem(menu, "Scoreboard", "Scoreboard");
-  
+
 	DisplayMenu(menu, client, MENU_TIME_FOREVER);
 }
 public Test(Handle:menu, MenuAction:action, param1, param2)

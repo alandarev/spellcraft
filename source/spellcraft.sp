@@ -48,7 +48,7 @@ public void OnPluginStart() {
 
   //Console commands
   //All of the following open the main menu:
-	RegConsoleCmd("menu", Open_MainMenu);
+  RegConsoleCmd("menu", Open_MainMenu);
   RegConsoleCmd("wcmenu", Open_MainMenu);
   RegConsoleCmd("scmenu", Open_MainMenu);
 }
