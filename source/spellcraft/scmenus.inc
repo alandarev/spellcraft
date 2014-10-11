@@ -70,7 +70,7 @@ public ExampleMenuHandler(Menu menu, //rename
 void MainMenu(client) {
 
   Menu menu = Menu(MainMenuHandler);
-  menu.ExitBackButton = true;
+  menu.ExitButton = true;
 
   /*** Title ***/
   char title[128];
