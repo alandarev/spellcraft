@@ -12,7 +12,6 @@
  */
 
 
-#include "spellcraft/spellcraft"
 
 #pragma semicolon 1
 #define SPELLCRAFT_VERSION "0.1"
@@ -23,6 +22,7 @@
 /**
  * Engine
  */
+#include "spellcraft/scmenus"
 
 /**
  * Content
