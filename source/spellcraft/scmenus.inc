@@ -27,7 +27,6 @@ OpenMenu(client)
   AddMenuItem(menu, "Scoreboard", "Scoreboard");
   
   DisplayMenu(menu, client, MENU_TIME_FOREVER);
-  return Plugin_Handled;
 }
 public MainMenu(Handle:menu, MenuAction:action, param1, param2)
 {
