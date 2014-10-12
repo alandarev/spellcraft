@@ -2,19 +2,19 @@
 {
   "spellcraft"
   {
-    "en"  "SpellCraft"
+    "en"  "Spellcraft"
   }
   "sc main menu title"
   {
-    "en"  "SpellCraft Menu"
+    "en"  "Spellcraft Menu"
   }
   "sc hero menu"
   {
     "en"  "Hero Menu"
   }
-  "sc backpack menu"
+  "sc items menu"
   {
-    "en"  "Backpack Menu"
+    "en"  "Items"
   }
   "sc premium menu"
   {
