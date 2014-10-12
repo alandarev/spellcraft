@@ -126,6 +126,62 @@ public MainMenuHandler(Menu menu,
     delete menu;
 }
 
+public HeroMenu(client) {
+
+  Menu menu = Menu(HeroMenuHandler);
+  menu.ExitBackButton = true;
+
+  /*** Title ***/
+  char title[128];
+  Format(title,sizeof(title),"%T","sc menu title",client);
+  menu.SetTitle(title);
+
+  /*** Menu Items ***/
+  char buffer[200];
+  Format(buffer, sizeof(buffer), "%T", "My menu item", client);
+  menu.AddItem("meta-data", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
+
+  /*** Example of Menu Item with meta-data as function with 'client'. ***/
+  /*** Use it as preferred method for menus which do not need more info than clien ***/
+  /*
+  Format(buffer,sizeof(buffer),"%T","sc auction",client);
+  menu.AddItem("AuctionsMenu",buffer);
+  */
+
+  /*** Send to client ***/
+  menu.Display(client,MENU_TIME_FOREVER);
+
+}
+
+public HeroMenuHandler(Menu menu, //rename
+                        MenuAction action,
+                        client, slot) {
+  if(action == MenuAction_Select) {
+    char buffer[100];
+    menu.GetItem(slot,buffer,sizeof(buffer));
+
+    //Call function
+    Function func = GetFunctionByName(INVALID_HANDLE, buffer);
+    Call_StartFunction(INVALID_HANDLE, func);
+    Call_PushCell(client);
+    if(Call_Finish() != SP_ERROR_NONE)  {
+      char err[100];
+      Format(err,100,"[SC] Could not callback the function: %s",buffer);
+      LogError(err);
+    }
+
+  }
+
+  if(action == MenuAction_Cancel)
+    if(slot == MenuCancel_ExitBack) {
+      MainMenu(client);
+    }
+  if(action == MenuAction_End)
+    delete menu;
+
+}
+
+
 
 
 public Action:Open_MainMenu(client, args)
