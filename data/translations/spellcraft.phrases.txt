@@ -32,4 +32,8 @@
   {
     "en"  "Auction"
   }
+  "placeholder"
+  {
+    "en"  "placeholder"
+  }
 }

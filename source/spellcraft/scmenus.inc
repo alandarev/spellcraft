@@ -138,7 +138,7 @@ public void HeroMenu(client) {
 
   /*** Menu Items ***/
   char buffer[200];
-  Format(buffer, sizeof(buffer), "%T", "My menu item", client);
+  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
   menu.AddItem("meta-data", buffer);
 
   /*** Example of Menu Item with meta-data as function with 'client'. ***/
