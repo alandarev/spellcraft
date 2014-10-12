@@ -1,5 +1,5 @@
 /*
-* Include file hanlding all the radio menus in the SpellCraft mod
+* Include file hanlding all the radio menus in the Spellcraft mod
 */
 
 
@@ -82,7 +82,7 @@ void MainMenu(client) {
   Format(buffer, sizeof(buffer), "%T", "sc hero menu", client);
   menu.AddItem("HeroMenu", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
 
-  Format(buffer, sizeof(buffer), "%T", "sc backpack menu", client);
+  Format(buffer, sizeof(buffer), "%T", "sc items menu", client);
   menu.AddItem("BackpackMenu", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
 
   Format(buffer, sizeof(buffer), "%T", "sc premium menu", client);

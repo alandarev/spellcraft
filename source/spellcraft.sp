@@ -31,7 +31,7 @@
 
 public Plugin:myinfo =
 {
-  name = "SpellCraft",
+  name = "Spellcraft",
   author = "Check at GitHub",
   description = "RPG mod, allows players to craft their own spells and use in-game.",
   version = SPELLCRAFT_VERSION,
@@ -40,12 +40,12 @@ public Plugin:myinfo =
 
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
 {
-  PrintToServer("----------------|      SpellCraft Load Stage 1    |---------------");
+  PrintToServer("----------------|      Spellcraft Load Stage 1    |---------------");
   return APLRes_Success;
 }
 
 public void OnPluginStart() {
-  PrintToServer("----------------|      SpellCraft Load Stage 2    |---------------");
+  PrintToServer("----------------|      Spellcraft Load Stage 2    |---------------");
 
   PrintToServer("translations file loading");
   LoadTranslations("spellcraft.phrases");
@@ -64,7 +64,7 @@ public void OnPluginStart() {
 }
 
 public void OnConfigsExecuted() {
-  PrintToServer("----------------|      SpellCraft Config Loaded   |---------------");
+  PrintToServer("----------------|      Spellcraft Config Loaded   |---------------");
 }
 
 int test;

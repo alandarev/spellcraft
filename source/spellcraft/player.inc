@@ -1,5 +1,5 @@
 /*
-* Player "Class" for SpellCraft mod
+* Player "Class" for Spellcraft mod
 */
 
 
