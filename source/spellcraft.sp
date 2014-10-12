@@ -50,7 +50,7 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 
 public void OnPluginStart() {
   PrintToServer("----------------|      Spellcraft Load Stage 2    |---------------");
-  DB.connect();
+  DB.Connect();
 
   PrintToServer("translations file loading");
   LoadTranslations("spellcraft.phrases");
@@ -71,3 +71,6 @@ public void OnConfigsExecuted() {
   PrintToServer("----------------|      Spellcraft Config Loaded   |---------------");
 }
 
+public void OnClientAuthorized(int client, const char[] auth) {
+  DB.LoadPlayer(client);
+}

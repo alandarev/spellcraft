@@ -7,10 +7,12 @@ methodmap Database {
   public Database() {
     return Database:0;
   }
-  public void connect() {
+  public void Connect() {
 
   }
-  public void LoadPlayer(Player player) {
+  public void LoadPlayer(int client) {
+    Player player = Player(client);
+
     player.clean();
 
     player.hero = Hero:1;
