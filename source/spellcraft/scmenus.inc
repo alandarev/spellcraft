@@ -139,7 +139,7 @@ public void HeroMenu(client) {
   /*** Menu Items ***/
   char buffer[200];
   Format(buffer, sizeof(buffer), "%T", "placeholder", client);
-  menu.AddItem("meta-data", buffer);
+  menu.AddItem("SpellOne", buffer);
   
   Format(buffer, sizeof(buffer), "%T", "placeholder", client);
   menu.AddItem("meta-data", buffer);
@@ -161,8 +161,55 @@ public void HeroMenu(client) {
   menu.Display(client,MENU_TIME_FOREVER);
 
 }
-
 public HeroMenuHandler(Menu menu, //rename
+                        MenuAction action,
+                        client, slot) {
+  if(action == MenuAction_Select) {
+    char buffer[100];
+    menu.GetItem(slot,buffer,sizeof(buffer));
+
+    //Call function
+    Function func = GetFunctionByName(INVALID_HANDLE, buffer);
+    Call_StartFunction(INVALID_HANDLE, func);
+    Call_PushCell(client);
+    if(Call_Finish() != SP_ERROR_NONE)  {
+      char err[100];
+      Format(err,100,"[SC] Could not callback the function: %s",buffer);
+      LogError(err);
+    }
+
+  }
+
+  if(action == MenuAction_Cancel)
+    if(slot == MenuCancel_ExitBack) {
+      MainMenu(client);
+    }
+  if(action == MenuAction_End)
+    delete menu;
+
+}
+
+public void SpellOne(client) {
+
+  Menu menu = Menu(SpellOneHandler);
+  menu.ExitBackButton = true;
+
+  char title[128];
+  char spellname[128];
+  //Format(title,sizeof(title),"%T","sc hero menu",client);
+  
+  Format(title, sizeof(title), "%T", "placeholder");
+  menu.SetTitle(title);
+
+  char buffer[200];
+  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
+  menu.AddItem("meta-data", buffer);
+ 
+  menu.Display(client,MENU_TIME_FOREVER);
+
+}
+
+public SpellOneHandler(Menu menu, //rename
                         MenuAction action,
                         client, slot) {
   if(action == MenuAction_Select) {
@@ -205,103 +252,3 @@ public Action:Open_MainMenu(client, args)
   }
   return Plugin_Handled;
 }
-
-/*
-OpenMenu(client)
-{
-  //new Handle:menu = CreateMenu(MainMenu, MenuAction_Select | MenuAction_End | MenuAction_DisplayItem);
-  new Handle:menu = CreateMenuEx(GetMenuStyleHandle(MenuStyle_Valve), MainMenu, MenuAction_Select | MenuAction_End | MenuAction_DisplayItem);
-
-  SetMenuTitle(menu, "Menu");
-
-  AddMenuItem(menu, "Items", "Items");
-  AddMenuItem(menu, "Spells", "Spells");
-  AddMenuItem(menu, "Characters", "Characters");
-  AddMenuItem(menu, "Other Players", "Other Players");
-  AddMenuItem(menu, "Scoreboard", "Scoreboard");
-
-  DisplayMenu(menu, client, MENU_TIME_FOREVER);
-}
-public MainMenu(Handle:menu, MenuAction:action, param1, param2)
-{
-	switch (action)
-	{
-		case MenuAction_Select:
-		{
-			//param1 is client, param2 is item
-
-			new String:item[64];
-			GetMenuItem(menu, param2, item, sizeof(item));
-
-			if (StrEqual(item, "Items"))
-			{
-
-			}
-			else if (StrEqual(item, "Spells"))
-			{
-
-			}
-			else if (StrEqual(item, "Characters"))
-			{
-
-			}
-			else if (StrEqual(item, "Other Players"))
-			{
-
-			}
-			else if (StrEqual(item, "Scoreboard"))
-			{
-
-			}
-		}
-
-		case MenuAction_End:
-		{
-			//param1 is MenuEnd reason, if canceled param2 is MenuCancel reason
-			CloseHandle(menu);
-
-		}
-
-		case MenuAction_DisplayItem:
-		{
-			//param1 is client, param2 is item
-
-			new String:item[64];
-			GetMenuItem(menu, param2, item, sizeof(item));
-
-			if (StrEqual(item, "Items"))
-			{
-				new String:translation[128];
-				Format(translation, sizeof(translation), "%T", "Items", param1);
-				return RedrawMenuItem(translation);
-			}
-			else if (StrEqual(item, "Spells"))
-			{
-				new String:translation[128];
-				Format(translation, sizeof(translation), "%T", "Spells", param1);
-				return RedrawMenuItem(translation);
-			}
-			else if (StrEqual(item, "Characters"))
-			{
-				new String:translation[128];
-				Format(translation, sizeof(translation), "%T", "Characters", param1);
-				return RedrawMenuItem(translation);
-			}
-			else if (StrEqual(item, "Other Players"))
-			{
-				new String:translation[128];
-				Format(translation, sizeof(translation), "%T", "Other Players", param1);
-				return RedrawMenuItem(translation);
-			}
-			else if (StrEqual(item, "Scoreboard"))
-			{
-				new String:translation[128];
-				Format(translation, sizeof(translation), "%T", "Scoreboard", param1);
-				return RedrawMenuItem(translation);
-			}
-		}
-
-	}
-	return 0;
-}
-        */

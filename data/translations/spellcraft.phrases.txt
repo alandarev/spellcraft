@@ -36,4 +36,12 @@
   {
     "en"  "Placeholder"
   }
+  "no spell"
+  {
+    "en"  "No Spell"
+  }
+  "earth wall name"
+  {
+    "en"  "Earth Wall"
+  }
 }
