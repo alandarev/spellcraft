@@ -28,4 +28,8 @@
   {
     "en"  "Help"
   }
+  "sc auction"
+  {
+    "en"  "Auction"
+  }
 }
