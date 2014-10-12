@@ -14,6 +14,16 @@ int __hero_level[PHMAX];
 int __hero_spells[PHMAX][MAXSPELLS];
 
 methodmap Hero  {
+  /**
+   * Clean hero data
+   */
+  public void clean() {
+    __hero_xp[this] = 0;
+    __hero_level[this] = 0;
+    for(int i=0; i<MAXSPELLS; i++)  {
+      __hero_spells[this][i] = 0;
+    }
+  }
 
   property int client {
     public get() {

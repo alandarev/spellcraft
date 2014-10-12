@@ -23,6 +23,25 @@ methodmap Player {
       return Hero:ToHeroIndex(_:this, __player_current_hero[this]);
     }
   }
+
+  public Hero GetHero(int index)  {
+    return Hero:ToHeroIndex(_:this, index);
+  }
+
+  /**
+   * Clean player dat
+   */
+  public void clean()  {
+    for(int i=0; i < MAXHEROES; i++)  {
+      Hero hero = this.GetHero(i);
+      hero.clean();
+    }
+
+    // Now clean player data itself
+    __player_current_hero[this] = 0;
+  }
+
+
 }
 
 

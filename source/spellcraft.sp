@@ -31,7 +31,7 @@
 /**
  * Content
  */
-Database DB = Database();
+Database DB;
 
 public Plugin:myinfo =
 {
@@ -50,6 +50,7 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 
 public void OnPluginStart() {
   PrintToServer("----------------|      Spellcraft Load Stage 2    |---------------");
+  DB.connect();
 
   PrintToServer("translations file loading");
   LoadTranslations("spellcraft.phrases");
