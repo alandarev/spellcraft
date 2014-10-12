@@ -202,7 +202,7 @@ public void SpellOne(client) {
   menu.SetTitle(title);
 
   char buffer[200];
-  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
+  Format(buffer, sizeof(buffer), "%T", "placeholder");
   menu.AddItem("meta-data", buffer);
  
   menu.Display(client,MENU_TIME_FOREVER);
