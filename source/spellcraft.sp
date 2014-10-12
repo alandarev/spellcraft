@@ -22,6 +22,7 @@
 /**
  * Engine
  */
+#include "spellcraft/hero"
 #include "spellcraft/player"
 #include "spellcraft/database"
 #include "spellcraft/scmenus"
@@ -68,6 +69,4 @@ public void OnPluginStart() {
 public void OnConfigsExecuted() {
   PrintToServer("----------------|      Spellcraft Config Loaded   |---------------");
 }
-
-int test;
 
