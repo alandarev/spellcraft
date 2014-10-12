@@ -78,4 +78,5 @@ int HeroIndexToSlot(any index)  {
 
 int _getRequiredXp(level) {
   // TODO: hani? :)
+  return 500;
 }
