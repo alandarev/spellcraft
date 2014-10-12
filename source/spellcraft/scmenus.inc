@@ -175,7 +175,7 @@ public HeroMenuHandler(Menu menu,
 
 }
 
-public void SpellMenu(int client, spellSlot) {
+public void SpellMenu(int client, int spellSlot) {
 
   Menu menu = Menu(SpellMenuHandler);
   menu.ExitBackButton = true;
