@@ -23,11 +23,13 @@
  * Engine
  */
 #include "spellcraft/player"
+#include "spellcraft/database"
 #include "spellcraft/scmenus"
 
 /**
  * Content
  */
+Database DB = Database();
 
 public Plugin:myinfo =
 {
