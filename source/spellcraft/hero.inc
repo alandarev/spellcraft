@@ -8,6 +8,7 @@
 // Array size to fit all the players multiplied by maximum heroes they can have
 #define PHMAX MAXPLAYERS * MAXHEROES
 
+
 int __hero_xp[PHMAX];
 int __hero_level[PHMAX];
 int __hero_spells[PHMAX][MAXSPELLS];

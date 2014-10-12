@@ -9,3 +9,4 @@ methodmap Spell {
     Format(buffer, maxlen, "no spell");
   }
 }
+
