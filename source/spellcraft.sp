@@ -23,7 +23,7 @@
  * Engine
  */
 #include "spellcraft/player"
-#include "spellcraft/database"
+//#include "spellcraft/database"
 #include "spellcraft/scmenus"
 
 /**
