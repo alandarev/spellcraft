@@ -83,7 +83,7 @@ void MainMenu(client) {
   menu.AddItem("HeroMenu", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
 
   Format(buffer, sizeof(buffer), "%T", "sc items menu", client);
-  menu.AddItem("BackpackMenu", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
+  menu.AddItem("ItemsMenu", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
 
   Format(buffer, sizeof(buffer), "%T", "sc premium menu", client);
   menu.AddItem("PremiumMenu", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
@@ -126,14 +126,122 @@ public MainMenuHandler(Menu menu,
     delete menu;
 }
 
-public HeroMenu(client) {
+public void HeroMenu(client) {
 
   Menu menu = Menu(HeroMenuHandler);
   menu.ExitBackButton = true;
 
   /*** Title ***/
   char title[128];
-  Format(title,sizeof(title),"%T","sc menu title",client);
+  Format(title,sizeof(title),"%T","sc hero menu",client);
+  menu.SetTitle(title);
+
+  /*** Menu Items ***/
+  char buffer[200];
+  Format(buffer, sizeof(buffer), "%T", "My menu item", client);
+  menu.AddItem("meta-data", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
+
+  /*** Example of Menu Item with meta-data as function with 'client'. ***/
+  /*** Use it as preferred method for menus which do not need more info than clien ***/
+  /*
+  Format(buffer,sizeof(buffer),"%T","sc auction",client);
+  menu.AddItem("AuctionsMenu",buffer);
+  */
+
+  /*** Send to client ***/
+  menu.Display(client,MENU_TIME_FOREVER);
+
+}
+
+public void ItemsMenu(client) {
+
+  Menu menu = Menu(HeroMenuHandler);
+  menu.ExitBackButton = true;
+
+  /*** Title ***/
+  char title[128];
+  Format(title,sizeof(title),"%T","sc items menu",client);
+  menu.SetTitle(title);
+
+  /*** Menu Items ***/
+  char buffer[200];
+  Format(buffer, sizeof(buffer), "%T", "My menu item", client);
+  menu.AddItem("meta-data", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
+
+  /*** Example of Menu Item with meta-data as function with 'client'. ***/
+  /*** Use it as preferred method for menus which do not need more info than clien ***/
+  /*
+  Format(buffer,sizeof(buffer),"%T","sc auction",client);
+  menu.AddItem("AuctionsMenu",buffer);
+  */
+
+  /*** Send to client ***/
+  menu.Display(client,MENU_TIME_FOREVER);
+
+}
+
+public void PremiumMenu(client) {
+
+  Menu menu = Menu(HeroMenuHandler);
+  menu.ExitBackButton = true;
+
+  /*** Title ***/
+  char title[128];
+  Format(title,sizeof(title),"%T","sc premium menu",client);
+  menu.SetTitle(title);
+
+  /*** Menu Items ***/
+  char buffer[200];
+  Format(buffer, sizeof(buffer), "%T", "My menu item", client);
+  menu.AddItem("meta-data", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
+
+  /*** Example of Menu Item with meta-data as function with 'client'. ***/
+  /*** Use it as preferred method for menus which do not need more info than clien ***/
+  /*
+  Format(buffer,sizeof(buffer),"%T","sc auction",client);
+  menu.AddItem("AuctionsMenu",buffer);
+  */
+
+  /*** Send to client ***/
+  menu.Display(client,MENU_TIME_FOREVER);
+
+}
+
+public void OtherPlayersMenu(client) {
+
+  Menu menu = Menu(HeroMenuHandler);
+  menu.ExitBackButton = true;
+
+  /*** Title ***/
+  char title[128];
+  Format(title,sizeof(title),"%T","sc other players menu",client);
+  menu.SetTitle(title);
+
+  /*** Menu Items ***/
+  char buffer[200];
+  Format(buffer, sizeof(buffer), "%T", "My menu item", client);
+  menu.AddItem("meta-data", buffer, ITEMDRAW_DISABLED); // Remove ITEMDRAW_DISABLED if not needed
+
+  /*** Example of Menu Item with meta-data as function with 'client'. ***/
+  /*** Use it as preferred method for menus which do not need more info than clien ***/
+  /*
+  Format(buffer,sizeof(buffer),"%T","sc auction",client);
+  menu.AddItem("AuctionsMenu",buffer);
+  */
+
+  /*** Send to client ***/
+  menu.Display(client,MENU_TIME_FOREVER);
+
+}
+
+public void HelpMenu(client) {
+
+  Menu menu = Menu(HeroMenuHandler);
+  menu.ExitBackButton = true;
+
+  /*** Title ***/
+  char title[128];
+  Format(title,sizeof(title),"%T","sc help menu",client);
   menu.SetTitle(title);
 
   /*** Menu Items ***/
