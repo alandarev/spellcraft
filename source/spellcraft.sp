@@ -29,7 +29,7 @@
 /**
  * Content
  */
-Database DB = Database();
+//Database DB = Database();
 
 public Plugin:myinfo =
 {
@@ -59,10 +59,10 @@ public void OnPluginStart() {
   RegConsoleCmd("scmenu", Open_MainMenu);
 
   // Some testing
-  Player myPlayer = Player(1);
+  /*Player myPlayer = Player(1);
   PrintToServer("Player a = %d", myPlayer);
   int[] tests = {5, 6, 7};
-  PrintToServer("Test = %d", tests[myPlayer]);
+  PrintToServer("Test = %d", tests[myPlayer]);*/
 }
 
 public void OnConfigsExecuted() {
