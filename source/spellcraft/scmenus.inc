@@ -126,7 +126,7 @@ public MainMenuHandler(Menu menu,
     delete menu;
 }
 
-public void HeroMenu(client) {
+public void HeroMenu(int client) {
 
   Menu menu = Menu(HeroMenuHandler);
   menu.ExitBackButton = true;
@@ -139,44 +139,30 @@ public void HeroMenu(client) {
   /*** Menu Items ***/
   char buffer[200];
   Format(buffer, sizeof(buffer), "%T", "placeholder", client);
-  menu.AddItem("SpellOne", buffer);
-  
-  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
-  menu.AddItem("meta-data", buffer);
-  
-  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
-  menu.AddItem("meta-data", buffer);
-  
-  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
-  menu.AddItem("meta-data", buffer);
+  menu.AddItem("0", buffer);
 
-  /*** Example of Menu Item with meta-data as function with 'client'. ***/
-  /*** Use it as preferred method for menus which do not need more info than client ***/
-  /*
-  Format(buffer,sizeof(buffer),"%T","sc auction",client);
-  menu.AddItem("AuctionsMenu",buffer);
-  */
+  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
+  menu.AddItem("1", buffer);
+
+  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
+  menu.AddItem("2", buffer);
+
+  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
+  menu.AddItem("3", buffer);
 
   /*** Send to client ***/
   menu.Display(client,MENU_TIME_FOREVER);
 
 }
-public HeroMenuHandler(Menu menu, //rename
+public HeroMenuHandler(Menu menu,
                         MenuAction action,
                         client, slot) {
   if(action == MenuAction_Select) {
     char buffer[100];
     menu.GetItem(slot,buffer,sizeof(buffer));
+    int spellSlot = StringToInt(buffer);
 
-    //Call function
-    Function func = GetFunctionByName(INVALID_HANDLE, buffer);
-    Call_StartFunction(INVALID_HANDLE, func);
-    Call_PushCell(client);
-    if(Call_Finish() != SP_ERROR_NONE)  {
-      char err[100];
-      Format(err,100,"[SC] Could not callback the function: %s",buffer);
-      LogError(err);
-    }
+    SpellMenu(client, spellSlot);
 
   }
 
@@ -189,27 +175,29 @@ public HeroMenuHandler(Menu menu, //rename
 
 }
 
-public void SpellOne(client) {
+public void SpellMenu(int client, spellSlot) {
 
-  Menu menu = Menu(SpellOneHandler);
+  Menu menu = Menu(SpellMenuHandler);
   menu.ExitBackButton = true;
 
   char title[128];
   char spellname[128];
-  //Format(title,sizeof(title),"%T","sc hero menu",client);
-  
-  Format(title, sizeof(title), "%T", "placeholder");
+
+  Spell spell = Player(client).hero.GetSpell(spellSlot);
+  spell.GetName(spellname,sizeof(spellname));
+
+  Format(title, sizeof(title), "%T", "placeholder", client);
   menu.SetTitle(title);
 
   char buffer[200];
-  Format(buffer, sizeof(buffer), "%T", "placeholder");
+  Format(buffer, sizeof(buffer), "%T", spellname, client);
   menu.AddItem("meta-data", buffer);
- 
+
   menu.Display(client,MENU_TIME_FOREVER);
 
 }
 
-public SpellOneHandler(Menu menu, //rename
+public SpellMenuHandler(Menu menu, //rename
                         MenuAction action,
                         client, slot) {
   if(action == MenuAction_Select) {
@@ -230,7 +218,7 @@ public SpellOneHandler(Menu menu, //rename
 
   if(action == MenuAction_Cancel)
     if(slot == MenuCancel_ExitBack) {
-      MainMenu(client);
+      HeroMenu(client);
     }
   if(action == MenuAction_End)
     delete menu;
