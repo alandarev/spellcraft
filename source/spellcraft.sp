@@ -22,6 +22,7 @@
 /**
  * Engine
  */
+#include "spellcraft/spells"
 #include "spellcraft/hero"
 #include "spellcraft/player"
 #include "spellcraft/database"
