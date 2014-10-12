@@ -60,10 +60,9 @@ public void OnPluginStart() {
   RegConsoleCmd("scmenu", Open_MainMenu);
 
   // Some testing
-  Player myPlayer = Player(1);
-  PrintToServer("Player a = %d", myPlayer);
-  int[] tests = {5, 6, 7};
-  PrintToServer("Test = %d", tests[myPlayer]);
+  Player p = Player(1);
+  p.hero.GiveXp(100);
+  PrintToServer("Hero is level %d, has xp = %d, and needs xp = %d", p.hero.level, p.hero.xp, p.hero.requiredXp);
 }
 
 public void OnConfigsExecuted() {

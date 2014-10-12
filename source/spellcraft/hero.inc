@@ -40,15 +40,15 @@ methodmap Hero  {
     }
   }
 
-  property int requireXp  {
+  property int requiredXp  {
     public get()  {
       return _getRequiredXp(this.level);
     }
   }
 
-  public void GiveXP(int xp)  {
+  public void GiveXp(int xp)  {
     this.xp += xp;
-    if(this.xp > this.requireXp)  {
+    if(this.xp > this.requiredXp)  {
       // Level UP
       // TODO
     }
