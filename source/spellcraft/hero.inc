@@ -71,7 +71,9 @@ methodmap Hero  {
   public Spell GetSpell(int slot) {
     return Spell:__hero_spells[this][slot];
   }
-
+  public void SetSpell(int slot, int id)  {
+    __hero_spells[this][slot] = id;
+  }
 }
 
 int ToHeroIndex(client, slot) {

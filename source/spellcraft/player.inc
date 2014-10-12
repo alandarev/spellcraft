@@ -22,6 +22,9 @@ methodmap Player {
     public get()  {
       return Hero:ToHeroIndex(_:this, __player_current_hero[this]);
     }
+    public set(Hero slot)  {
+      __player_current_hero[this] = _:slot;
+    }
   }
 
   public Hero GetHero(int index)  {
