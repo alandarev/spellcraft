@@ -21,8 +21,8 @@ void AnnounceDrop(int client, int orbId, int amount) {
   DrawPanelItem(panel, " \n", ITEMDRAW_RAWLINE|ITEMDRAW_SPACER);
 
   SetPanelCurrentKey(panel, 3);
-  Format(temp, sizeof(temp), "%T", "exit", client);
-  DrawPanelItem(panel, temp, ITEMDRAW_CONTROL);
+  Format(message, sizeof(message), "%T", "exit", client);
+  DrawPanelItem(panel, message, ITEMDRAW_CONTROL);
   SendPanelToClient(panel, client, PanelHandler, 15);
 
   CloseHandle(panel);
@@ -31,6 +31,3 @@ void AnnounceDrop(int client, int orbId, int amount) {
 public PanelHandler(Handle:menu, MenuAction:action, client, slot)   {
 }
 
-
-
-}

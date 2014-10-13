@@ -32,6 +32,7 @@
 #include "spellcraft/scmenus"
 
 #include "spellcraft/hooks"
+#include "spellcraft/messages"
 
 /**
  * Content
@@ -55,6 +56,7 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 
 public void OnPluginStart() {
   PrintToServer("----------------|      Spellcraft Load Stage 2    |---------------");
+  ReloadConfig();
   HookEvents();
   DB.Connect();
 

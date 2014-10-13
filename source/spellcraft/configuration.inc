@@ -1,6 +1,8 @@
-#define DROP_ON_KILL FindSettingFloat("orbs", "drop_on_kill");
+#define DROP_ON_KILL FindSettingFloat("orbs", "drop_on_kill")
 
-Handle config
+
+char WIKI_PAGE[100];
+Handle config;
 
 void ReloadConfig() {
   ServerCommand("alias screset \"sm plugins unload spellcraft;changelevel de_dust2;\"");
@@ -32,7 +34,7 @@ public int FindSettingInt(const char[] category, const char[] name) {
   return KvGetNum(config, name);
 }
 
-public int FindSettingFloat(const char[] category, const char[] name) {
+public float FindSettingFloat(const char[] category, const char[] name) {
   KvRewind(config);
   KvJumpToKey(config, category);
   return KvGetFloat(config, name);
