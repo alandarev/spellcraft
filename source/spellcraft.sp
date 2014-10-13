@@ -19,7 +19,9 @@
 /**
  * External libraries
  */
+#include <sourcemod>
 #include <colors>
+#include <sdkhooks>
 
 /**
  * Declarations
@@ -29,6 +31,7 @@
 /**
  * Engine
  */
+#include "spellcraft/damages"
 #include "spellcraft/configuration"
 #include "spellcraft/orbs"
 #include "spellcraft/spells"
@@ -90,3 +93,15 @@ public void OnConfigsExecuted() {
 public void OnClientAuthorized(int client, const char[] auth) {
   DB.LoadPlayer(client);
 }
+
+public void OnClientPutInServer(int client)
+{
+  SDKHook(client, SDKHook_OnTakeDamage, OnTakeDamageHook);
+  /*SDKHook(client, SDKHook_OnTakeDamagePost, OnTakeDamagePostHook);*/
+}
+public void OnClientDisconnect(int client)
+{
+  SDKUnhook(client, SDKHook_OnTakeDamage, OnTakeDamageHook);
+  /*SDKUnhook(client, SDKHook_OnTakeDamagePost, OnTakeDamagePostHook);*/
+}
+

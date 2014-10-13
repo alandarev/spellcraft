@@ -76,15 +76,15 @@ methodmap Hero  {
   }
 }
 
-int ToHeroIndex(client, slot) {
+stock int ToHeroIndex(client, slot) {
   return client * (MAXHEROES + 1) + slot;
 }
 
-int HeroIndexToClient(any index)  {
+stock int HeroIndexToClient(any index)  {
   return index / (MAXHEROES + 1);
 }
 
-int HeroIndexToSlot(any index)  {
+stock int HeroIndexToSlot(any index)  {
   return index % (MAXHEROES + 1);
 }
 
