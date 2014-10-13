@@ -44,4 +44,30 @@
   {
     "en"  "Earth Wall"
   }
+  "orb_1"
+  {
+    "en"  "Orb of Fire"
+  }
+  "orb_2"
+  {
+    "en"  "Orb of Frost"
+  }
+  "orb_3"
+  {
+    "en"  "Orb of Earth"
+  }
+  "panel an drop title"
+  {
+    "en"  "Congratulations!"
+  }
+  "panel an drop item"
+  {
+    "#format" "{1:s},{2:d}"
+    "en"  "You received: {1} x{2}!"
+  }
+  "you now have x orbs"
+  {
+    "#format" "{1:s},{2:d}"
+    "en"      "There are now {2} {1} in your inventory"
+  }
 }

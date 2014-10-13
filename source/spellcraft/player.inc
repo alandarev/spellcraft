@@ -39,6 +39,14 @@ methodmap Player {
     __player_orbs[this][orbId] = amount;
   }
 
+  public bool ChangeOrbsAmount(int orbId, int amount=1) {
+    if (__player_orbs[this][orbId] + amount < 0)  return false;
+    __player_orbs[this][orbId] += amount;
+    return true;
+  }
+
+
+
   /**
    * Clean player dat
    */
@@ -59,7 +67,10 @@ methodmap Player {
 }
 
 
-
-
-
+void GiveOrbs(int client, int orbId, int amount, bool announce=true)  {
+  Player(client).ChangeOrbsAmount(orbId, amount);
+  if(announce)  {
+    AnnounceDrop(client, orbId, amount);
+  }
+}
 

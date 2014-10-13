@@ -23,11 +23,15 @@
 /**
  * Engine
  */
+#include "spellcraft/configuration"
+#include "spellcraft/orbs"
 #include "spellcraft/spells"
 #include "spellcraft/hero"
 #include "spellcraft/player"
 #include "spellcraft/database"
 #include "spellcraft/scmenus"
+
+#include "spellcraft/hooks"
 
 /**
  * Content
@@ -51,6 +55,7 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 
 public void OnPluginStart() {
   PrintToServer("----------------|      Spellcraft Load Stage 2    |---------------");
+  HookEvents();
   DB.Connect();
 
   PrintToServer("translations file loading");
