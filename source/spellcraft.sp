@@ -15,6 +15,12 @@
 
 #pragma semicolon 1
 #define SPELLCRAFT_VERSION "0.1"
+
+/**
+ * External libraries
+ */
+#include <colors>
+
 /**
  * Declarations
  */
@@ -68,6 +74,8 @@ public void OnPluginStart() {
   RegConsoleCmd("menu", Open_MainMenu);
   RegConsoleCmd("wcmenu", Open_MainMenu);
   RegConsoleCmd("scmenu", Open_MainMenu);
+
+  RegConsoleCmd("test_colors", TestColors);
 
   // Some testing
   Player p = Player(1);

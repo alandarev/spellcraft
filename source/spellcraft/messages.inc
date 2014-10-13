@@ -31,3 +31,22 @@ void AnnounceDrop(int client, int orbId, int amount) {
 public PanelHandler(Handle:menu, MenuAction:action, client, slot)   {
 }
 
+public Action TestColors(client, args)  {
+         /*Color_Default = 0,*/
+	/*Color_Darkred,*/
+	/*Color_Green,*/
+	/*Color_Lightgreen,*/
+	/*Color_Red,*/
+	/*Color_Blue,*/
+	/*Color_Olive,*/
+	/*Color_Lime,*/
+	/*Color_Lightred,*/
+	/*Color_Purple,*/
+	/*Color_Grey,*/
+	/*Color_Orange*/
+  CPrintToChatAll("{default}default{darkred}darkred{green}green");
+  CPrintToChatAll("{lightgreen}lightgreen{red}red{blue}blue");
+  CPrintToChatAll("{olive}olive{lime}lime{lightred}lightred{purple}purple");
+  CPrintToChatAll("{grey}grey{orange}orange");
+  return Plugin_Handled;
+}
