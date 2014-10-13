@@ -18,6 +18,7 @@
 /**
  * Declarations
  */
+#include "spellcraft/declarations"
 
 /**
  * Engine

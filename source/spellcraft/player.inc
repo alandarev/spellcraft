@@ -4,7 +4,7 @@
 
 /* Variables storing player information */
 
-
+int __player_orbs[MAXPLAYERS][MAXORBS];
 int __player_current_hero[MAXPLAYERS];
 
 methodmap Player {
@@ -31,6 +31,14 @@ methodmap Player {
     return Hero:ToHeroIndex(_:this, index);
   }
 
+  public int GetOrbsAmount(int orbId) {
+    return __player_orbs[this][orbId];
+  }
+
+  public int SetOrbsAmount(int orbId, int amount) {
+    __player_orbs[this][orbId] = amount;
+  }
+
   /**
    * Clean player dat
    */
@@ -42,6 +50,9 @@ methodmap Player {
 
     // Now clean player data itself
     __player_current_hero[this] = 0;
+    for (int i=0; i<MAXORBS; i++) {
+      __player_orbs[this][i] = 0;
+    }
   }
 
 
