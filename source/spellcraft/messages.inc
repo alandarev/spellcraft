@@ -24,6 +24,7 @@ void AnnounceDrop(int client, int orbId, int amount) {
   DrawPanelItem(panel, " \n", ITEMDRAW_RAWLINE|ITEMDRAW_SPACER);
   int has = Player(client).GetOrbsAmount(orbId);
   Format(message, sizeof(message), "%T", "you now have x orbs", client, orbName, has);
+  DrawPanelText(panel, message);
   DrawPanelItem(panel, " \n", ITEMDRAW_RAWLINE|ITEMDRAW_SPACER);
 
   SetPanelCurrentKey(panel, 3);
