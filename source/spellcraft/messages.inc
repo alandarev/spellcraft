@@ -1,3 +1,9 @@
+// Possible colors for in-game chat:
+// default, darkred, green, lightgreen, t_orange, t_blue, t_olive, lime, lightred, purple, grey, yellow
+// Note that t_orange t_blue and t_olive cannot be used in same message, that is:
+// WRONG:  "Hello {t_orange}Stinky, {t_blue}you look good". That will throw an error as only one team type color can be in one message
+// OK:     "Hello {t_orange}Stinky, {t_orange}you look good"
+// OK:     "Hello {t_orange}Stinky, {lime}you look good"
 
 void AnnounceDrop(int client, int orbId, int amount) {
   char orbName[100];
