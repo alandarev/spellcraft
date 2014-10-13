@@ -97,5 +97,6 @@ int HeroIndexToSlot(any index)  {
 
 int _getRequiredXp(level) {
   // TODO: hani? :)
-  return 500;
+  int levelReq = RoundToNearest(140.0 * 1.22 ^ float(level));
+  return levelReq;
 }
