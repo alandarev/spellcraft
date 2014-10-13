@@ -70,4 +70,8 @@
     "#format" "{1:s},{2:d}"
     "en"      "There are now {2} {1} in your inventory"
   }
+  "exit"
+  {
+    "en"  "Exit"
+  }
 }

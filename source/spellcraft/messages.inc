@@ -45,7 +45,8 @@ public Action TestColors(client, args)  {
 	/*Color_Grey,*/
 	/*Color_Orange*/
   CPrintToChatAll("{default}default{darkred}darkred{green}green");
-  CPrintToChatAll("{lightgreen}lightgreen{red}red{blue}blue");
+  CPrintToChatAll("{lightgreen}lightgreen{red}red");
+  CPrintToChatAll("{blue}blue");
   CPrintToChatAll("{olive}olive{lime}lime{lightred}lightred{purple}purple");
   CPrintToChatAll("{grey}grey{orange}orange");
   return Plugin_Handled;
