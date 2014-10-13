@@ -44,15 +44,15 @@
   {
     "en"  "Earth Wall"
   }
-  "orb_1"
+  "orb_0"
   {
     "en"  "Orb of Fire"
   }
-  "orb_2"
+  "orb_1"
   {
     "en"  "Orb of Frost"
   }
-  "orb_3"
+  "orb_2"
   {
     "en"  "Orb of Earth"
   }

@@ -5,13 +5,13 @@
  *                           Version: 1.2.3                               *
  *                                                                        *
  **************************************************************************/
- 
+
 
 #if defined _colors_included
  #endinput
 #endif
 #define _colors_included
- 
+
 #define MAX_MESSAGE_LENGTH 250
 #define MAX_COLORS 12
 
@@ -36,7 +36,7 @@ enum Colors
 }
 
 /* Colors' properties */
-new String:CTag[][] = {"{default}", "{darkred}", "{green}", "{lightgreen}", "{red}", "{blue}", "{olive}", "{lime}", "{lightred}", "{purple}", "{grey}", "{orange}"};
+new String:CTag[][] = {"{default}", "{darkred}", "{green}", "{lightgreen}", "{t_orange}", "{t_blue}", "{t_olive}", "{lime}", "{lightred}", "{purple}", "{grey}", "{yellow}"};
 new String:CTagCode[][] = {"\x01", "\x02", "\x04", "\x03", "\x03", "\x03", "\x05", "\x06", "\x07", "\x03", "\x08", "\x09"};
 new bool:CTagReqSayText2[] = {false, false, false, true, true, true, false, false, false, false, false, false};
 new bool:CEventIsHooked = false;
@@ -56,7 +56,7 @@ static Handle:sm_show_activity = INVALID_HANDLE;
  * @param client	  Client index.
  * @param szMessage   Message (formatting rules).
  * @return			  No return
- * 
+ *
  * On error/Errors:   If the client is not connected an error will be thrown.
  */
 stock CPrintToChat(client, const String:szMessage[], any:...)
@@ -92,7 +92,7 @@ stock CPrintToChat(client, const String:szMessage[], any:...)
  * @param szMessage   Formatting rules.
  * @param ...         Variable number of format parameters.
  * @return			  No return
- * 
+ *
  * On error/Errors:   If the client is not connected or invalid.
  */
 stock CReplyToCommand(client, const String:szMessage[], any:...)
@@ -127,7 +127,7 @@ stock CReplyToCommand(client, const String:szMessage[], any:...)
  * @param szMessage   Formatting rules.
  * @param ...         Variable number of format parameters.
  * @return			  No return
- * 
+ *
  * On error/Errors:   If the client is not connected or invalid.
  */
 stock CReplyToCommandEx(client, author, const String:szMessage[], any:...)
@@ -186,7 +186,7 @@ stock CPrintToChatAll(const String:szMessage[], any:...)
  * @param author	  Author index whose color will be used for teamcolor tag.
  * @param szMessage   Message (formatting rules).
  * @return			  No return
- * 
+ *
  * On error/Errors:   If the client or author are not connected an error will be thrown.
  */
 stock CPrintToChatEx(client, author, const String:szMessage[], any:...)
@@ -223,7 +223,7 @@ stock CPrintToChatEx(client, author, const String:szMessage[], any:...)
  * @param author	  Author index whos color will be used for teamcolor tag.
  * @param szMessage   Message (formatting rules).
  * @return			  No return
- * 
+ *
  * On error/Errors:   If the author is not connected an error will be thrown.
  */
 stock CPrintToChatAllEx(author, const String:szMessage[], any:...)
@@ -312,7 +312,7 @@ stock CReplaceColor(Colors:color, Colors:newColor)
  * to those funcions to skip specified client when printing
  * message to all clients. After message is printed client will
  * no more be skipped.
- * 
+ *
  * @param client   Client index
  * @return		   No return
  */
@@ -330,7 +330,7 @@ stock CSkipNextClient(client)
  * @param szMessage   String.
  * @param maxlength   Maximum length of the string buffer.
  * @return			  Client index that can be used for SayText2 author index
- * 
+ *
  * On error/Errors:   If there is more then one team color is used an error will be thrown.
  */
 stock CFormat(String:szMessage[], maxlength, author=NO_INDEX)
@@ -351,7 +351,7 @@ stock CFormat(String:szMessage[], maxlength, author=NO_INDEX)
 	new iRandomPlayer = NO_INDEX;
 	
 	// On CS:GO set invisible precolor
-	if (StrEqual(szGameName, "csgo", false)) 
+	if (StrEqual(szGameName, "csgo", false))
 		Format(szMessage, maxlength, " \x01\x0B\x01%s", szMessage);
 	
 	/* If author was specified replace {teamcolor} tag */
@@ -393,7 +393,7 @@ stock CFormat(String:szMessage[], maxlength, author=NO_INDEX)
 				ReplaceString(szMessage, maxlength, CTag[i], CTagCode[Color_Green], false);
 				
 			/* Game supports saytext2 */
-			else 
+			else
 			{
 				/* If random player for tag wasn't specified replace tag and find player */
 				if (iRandomPlayer == NO_INDEX)
@@ -458,7 +458,7 @@ stock CSayText2(client, author, const String:szMessage[])
 {
 	new Handle:hBuffer = StartMessageOne("SayText2", client, USERMSG_RELIABLE|USERMSG_BLOCKHOOKS);
 	
-	if(GetFeatureStatus(FeatureType_Native, "GetUserMessageType") == FeatureStatus_Available && GetUserMessageType() == UM_Protobuf) 
+	if(GetFeatureStatus(FeatureType_Native, "GetUserMessageType") == FeatureStatus_Available && GetUserMessageType() == UM_Protobuf)
 	{
 		PbSetInt(hBuffer, "ent_idx", author);
 		PbSetBool(hBuffer, "chat", true);
@@ -479,7 +479,7 @@ stock CSayText2(client, author, const String:szMessage[])
 }
 
 /**
- * Creates game color profile 
+ * Creates game color profile
  * This function must be edited if you want to add more games support
  *
  * @return			  No return.
@@ -587,12 +587,12 @@ public Action:CEvent_MapStart(Handle:event, const String:name[], bool:dontBroadc
 }
 
 /**
- * Displays usage of an admin command to users depending on the 
- * setting of the sm_show_activity cvar.  
+ * Displays usage of an admin command to users depending on the
+ * setting of the sm_show_activity cvar.
  *
- * This version does not display a message to the originating client 
- * if used from chat triggers or menus.  If manual replies are used 
- * for these cases, then this function will suffice.  Otherwise, 
+ * This version does not display a message to the originating client
+ * if used from chat triggers or menus.  If manual replies are used
+ * for these cases, then this function will suffice.  Otherwise,
  * CShowActivity2() is slightly more useful.
  * Supports color tags.
  *
@@ -821,7 +821,7 @@ stock CShowActivityEx(client, const String:tag[], const String:format[], any:...
 
 /**
  * Displays usage of an admin command to users depending on the setting of the sm_show_activity cvar.
- * All users receive a message in their chat text, except for the originating client, 
+ * All users receive a message in their chat text, except for the originating client,
  * who receives the message based on the current ReplySource.
  * Supports color tags.
  *
@@ -860,8 +860,8 @@ stock CShowActivity2(client, const String:tag[], const String:format[], any:...)
 		SetGlobalTransTarget(client);
 		VFormat(szBuffer, sizeof(szBuffer), format, 4);
 		
-		/* We don't display directly to the console because the chat text 
-		 * simply gets added to the console, so we don't want it to print 
+		/* We don't display directly to the console because the chat text
+		 * simply gets added to the console, so we don't want it to print
 		 * twice.
 		 */		
 		CPrintToChatEx(client, client, "%s%s", tag, szBuffer);
