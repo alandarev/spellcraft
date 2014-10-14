@@ -23,6 +23,7 @@
 #include <colors>
 #include <sdkhooks>
 #include <sdktools>
+#include <smlib> // Do not use smlib's colors, use colors.inc instead.
 
 /**
  * Declarations
@@ -99,11 +100,11 @@ public void OnClientAuthorized(int client, const char[] auth) {
 public void OnClientPutInServer(int client)
 {
   SDKHook(client, SDKHook_OnTakeDamage, OnTakeDamageHook);
-  /*SDKHook(client, SDKHook_OnTakeDamagePost, OnTakeDamagePostHook);*/
+  SDKHook(client, SDKHook_OnTakeDamagePost, OnTakeDamagePostHook);
 }
 public void OnClientDisconnect(int client)
 {
   SDKUnhook(client, SDKHook_OnTakeDamage, OnTakeDamageHook);
-  /*SDKUnhook(client, SDKHook_OnTakeDamagePost, OnTakeDamagePostHook);*/
+  SDKUnhook(client, SDKHook_OnTakeDamagePost, OnTakeDamagePostHook);
 }
 
