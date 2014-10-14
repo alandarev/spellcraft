@@ -21,7 +21,7 @@ public Action OnTakeDamageHook(int victim, int &attacker, int &inflictor, float 
 
 public Action TestDamage(client, args)  {
   int prev = 0;
-  for(int i=0; i < GetMaxClients(); i++)  {
+  for(int i=1; i < GetMaxClients(); i++)  {
     if (IsClientInGame(i) && IsPlayerAlive(i))  {
       DealDamage(prev, i, "Spell", 20);
       prev = i;
