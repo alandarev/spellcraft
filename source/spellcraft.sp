@@ -99,7 +99,7 @@ public void OnClientAuthorized(int client, const char[] auth) {
 
 public void OnClientPutInServer(int client)
 {
-  SDKHook(client, SDKHook_OnTakeDamage, SC_OnTakeDamageHook);
+  SDKHook(client, SDKHook_OnTakeDamageAlive, SC_OnTakeDamageAliveHook);
   SDKHook(client, SDKHook_OnTakeDamagePost, SC_OnTakeDamagePostHook);
 }
 public void OnClientDisconnect(int client)
