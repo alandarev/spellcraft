@@ -24,8 +24,8 @@ public Action OnTakeDamageHook(int victim, int &attacker, int &inflictor, float 
 public void OnTakeDamagePostHook(int victim, int attacker, int inflictor, float damage, int damagetype, int weapon, const float damageForce[3], const float damagePosition[3]) {
   if(Client_IsIngame(victim) && IsPlayerAlive(victim))  {
     if(g_restoreArmor[victim] > 0)  {
-      Client_SetArmor(victim, g_restoreArmor);
-      g_restoreArmor = 0;
+      Client_SetArmor(victim, g_restoreArmor[victim]);
+      g_restoreArmor[victim] = 0;
     }
   }
 }
