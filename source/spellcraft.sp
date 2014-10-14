@@ -104,7 +104,7 @@ public void OnClientPutInServer(int client)
 }
 public void OnClientDisconnect(int client)
 {
-  SDKUnhook(client, SDKHook_OnTakeDamage, SC_OnTakeDamageHook);
+  SDKUnhook(client, SDKHook_OnTakeDamage, SC_OnTakeDamageAliveHook);
   SDKUnhook(client, SDKHook_OnTakeDamagePost, SC_OnTakeDamagePostHook);
 }
 

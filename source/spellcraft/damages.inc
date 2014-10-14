@@ -15,7 +15,7 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
   PrintToServer("victim = %d, attacker = %d, dmg = %.2f", victim, attacker, damage);
 
   // Mod code
-  damage = 10;
+  damage = 10.0;
 
   PrintToServer("On take damage end. dmg = %.2f", damage);
   return Plugin_Changed;
