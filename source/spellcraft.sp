@@ -22,6 +22,7 @@
 #include <sourcemod>
 #include <colors>
 #include <sdkhooks>
+#include <sdktools>
 
 /**
  * Declarations
