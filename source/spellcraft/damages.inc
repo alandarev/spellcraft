@@ -32,10 +32,7 @@ public Action TestDamage(client, args)  {
 
 stock void DealDamage(attacker, victim, String:weapon[]="Spell", damage=100, bool:headshot=false)
 {
-  SDKHooks_TakeDamage(victim, attacker, attacker, float(damage), DMG_GENERIC);
-  PrintToServer("done");
-  return;
-  int dmg_bullet = (1 << 28);
+  int dmg_bullet = DMG_CLUB;
 
   char dmg_str[16];
   IntToString(damage,dmg_str,16);
