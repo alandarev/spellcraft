@@ -27,11 +27,13 @@ public Action TestDamage(client, args)  {
       prev = i;
     }
   }
+  return Plugin_Handled;
 }
 
 stock void DealDamage(attacker, victim, String:weapon[]="Spell", damage=100, bool:headshot=false)
 {
   SDKHooks_TakeDamage(victim, attacker, attacker, float(damage), DMG_GENERIC);
+  PrintToSever("done");
   return;
   int dmg_bullet = (1 << 28);
 
