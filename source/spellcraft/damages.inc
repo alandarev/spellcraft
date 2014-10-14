@@ -8,7 +8,7 @@
  */
 int g_restoreArmor[MAXPLAYERS];
 
-public Action OnTakeDamageHook(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon,
+public Action SC_OnTakeDamageHook(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon,
   float damageForce[3], float damagePosition[3], int damagecustom)  {
 
   PrintToServer("On take damage start");
@@ -21,7 +21,7 @@ public Action OnTakeDamageHook(int victim, int &attacker, int &inflictor, float 
   return Plugin_Changed;
 }
 
-public void OnTakeDamagePostHook(int victim, int attacker, int inflictor, float damage, int damagetype, int weapon, const float damageForce[3], const float damagePosition[3]) {
+public void SC_OnTakeDamagePostHook(int victim, int attacker, int inflictor, float damage, int damagetype) {
   if(Client_IsIngame(victim) && IsPlayerAlive(victim))  {
     if(g_restoreArmor[victim] > 0)  {
       Client_SetArmor(victim, g_restoreArmor[victim]);
@@ -50,7 +50,7 @@ stock void DealDamage(attacker, victim, String:weapon[]="Spell", damage=100, boo
 
   int clientArmor = Client_GetArmor(victim);
   if(clientArmor > 0) {
-    g_restoreArmor[client] = clientArmor;
+    g_restoreArmor[victim] = clientArmor;
     Client_SetArmor(victim, 0);
   }
 
