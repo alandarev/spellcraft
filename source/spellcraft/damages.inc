@@ -20,8 +20,6 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
     }
   }
 
-  PrintToServer("On take damage start");
-  PrintToServer("victim = %d, attacker = %d, dmg = %.2f", victim, attacker, damage);
 
   // Mod code
   if(!g_isFakeDamage) {
@@ -32,12 +30,10 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
     // Damage caused by the mod
   }
 
-  PrintToServer("On take damage end. dmg = %.2f, cur hp = %d", damage, GetClientHealth(victim));
   return Plugin_Changed;
 }
 
 public void SC_OnTakeDamagePostHook(int victim, int attacker, int inflictor, float damage, int damagetype) {
-  PrintToServer("After take damage hp = %d", GetClientHealth(victim));
 }
 
 public Action TestDamage(client, args)  {

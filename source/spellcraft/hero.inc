@@ -11,7 +11,7 @@
 
 int __hero_xp[PHMAX];
 int __hero_level[PHMAX];
-int __hero_spells[PHMAX][MAXSPELLS];
+int __hero_spells[PHMAX][MAXSPELLS][2];
 
 methodmap Hero  {
   /**
@@ -69,10 +69,16 @@ methodmap Hero  {
   }
 
   public Spell GetSpell(int slot) {
-    return Spell:__hero_spells[this][slot];
+    return Spell:__hero_spells[this][slot][0];
   }
   public void SetSpell(int slot, int id)  {
-    __hero_spells[this][slot] = id;
+    __hero_spells[this][slot][0] = id;
+  }
+  public int GetSpellRank(int slot) {
+    return __hero_spells[this][slot][1];
+  }
+  public void SetSpellRank(int slot, int rank)  {
+    __hero_spells[this][slot][1] = rank;
   }
 }
 

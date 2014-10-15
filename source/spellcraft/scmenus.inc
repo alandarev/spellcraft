@@ -136,19 +136,22 @@ public void HeroMenu(int client) {
   Format(title,sizeof(title),"%T","sc hero menu",client);
   menu.SetTitle(title);
 
+  char spellName[30];
+  Hero hero = Player(client).hero;
+
   /*** Menu Items ***/
   char buffer[200];
-  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
-  menu.AddItem("0", buffer);
 
-  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
-  menu.AddItem("1", buffer);
+  for (int i=0; i<MAXSPELLS; i++) {
+    char sI[5];
+    IntToString(i, sI, sizeof(sI));
+    Spell spell = hero.GetSpell(0);
+    spell.GetName(spellName, sizeof(spellName));
+    int rank = hero.GetSpellRank(0);
 
-  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
-  menu.AddItem("2", buffer);
-
-  Format(buffer, sizeof(buffer), "%T", "placeholder", client);
-  menu.AddItem("3", buffer);
+    Format(buffer, sizeof(buffer), "%T", "spell entry", client, spellName, rank);
+    menu.AddItem(sId, buffer);
+  }
 
   /*** Send to client ***/
   menu.Display(client,MENU_TIME_FOREVER);
