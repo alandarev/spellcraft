@@ -100,11 +100,11 @@ public void OnClientAuthorized(int client, const char[] auth) {
 public void OnClientPutInServer(int client)
 {
   SDKHook(client, SDKHook_OnTakeDamageAlive, SC_OnTakeDamageAliveHook);
-  SDKHook(client, SDKHook_OnTakeDamagePost, SC_OnTakeDamagePostHook);
+  SDKHook(client, SDKHook_OnTakeDamageAlivePost, SC_OnTakeDamagePostHook);
 }
 public void OnClientDisconnect(int client)
 {
-  SDKUnhook(client, SDKHook_OnTakeDamage, SC_OnTakeDamageAliveHook);
-  SDKUnhook(client, SDKHook_OnTakeDamagePost, SC_OnTakeDamagePostHook);
+  SDKUnhook(client, SDKHook_OnTakeDamageAlive, SC_OnTakeDamageAliveHook);
+  SDKUnhook(client, SDKHook_OnTakeDamageAlivePost, SC_OnTakeDamagePostHook);
 }
 

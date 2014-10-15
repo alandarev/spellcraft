@@ -6,28 +6,37 @@
 /**
 * Note that it is pre-reduced damage.. That is 10 damage of a glock will end up being around 4 true damage
  */
-int g_restoreArmor[MAXPLAYERS];
+int g_restoreArmor;
+bool g_isFakeDamage;
 
 public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon,
   float damageForce[3], float damagePosition[3], int damagecustom)  {
+
+  // Restore armor if it was fake damage
+  if(Client_IsIngame(victim) && IsPlayerAlive(victim))  {
+    if(g_restoreArmor > 0)  {
+      Client_SetArmor(victim, g_restoreArmor);
+      g_restoreArmor = 0;
+    }
+  }
 
   PrintToServer("On take damage start");
   PrintToServer("victim = %d, attacker = %d, dmg = %.2f", victim, attacker, damage);
 
   // Mod code
-  damage = 10.0;
+  if(!g_isFakeDamage) {
+    // Damage caused by bullet
+    damage = 10.0;
+  }
+  else  {
+    // Damage caused by the mod
+  }
 
   PrintToServer("On take damage end. dmg = %.2f", damage);
   return Plugin_Changed;
 }
 
 public void SC_OnTakeDamagePostHook(int victim, int attacker, int inflictor, float damage, int damagetype) {
-  if(Client_IsIngame(victim) && IsPlayerAlive(victim))  {
-    if(g_restoreArmor[victim] > 0)  {
-      Client_SetArmor(victim, g_restoreArmor[victim]);
-      g_restoreArmor[victim] = 0;
-    }
-  }
 }
 
 public Action TestDamage(client, args)  {
@@ -50,13 +59,14 @@ stock void DealDamage(attacker, victim, String:weapon[]="Spell", damage=100, boo
 
   int clientArmor = Client_GetArmor(victim);
   if(clientArmor > 0) {
-    g_restoreArmor[victim] = clientArmor;
+    g_restoreArmor = clientArmor;
     Client_SetArmor(victim, 0);
   }
 
   new pointHurt=CreateEntityByName("point_hurt");
   if(pointHurt)
   {
+    g_isFakeDamage = true;
     DispatchKeyValue(victim,"targetname","sc_hurtme");
     DispatchKeyValue(pointHurt,"DamageTarget","sc_hurtme");
     DispatchKeyValue(pointHurt,"Damage",dmg_str);
@@ -70,6 +80,7 @@ stock void DealDamage(attacker, victim, String:weapon[]="Spell", damage=100, boo
     DispatchKeyValue(pointHurt,"classname","point_hurt");
     DispatchKeyValue(victim,"targetname","sc_no_hurtme");
     RemoveEdict(pointHurt);
+    g_isFakeDamage = false;
   }
 }
 
