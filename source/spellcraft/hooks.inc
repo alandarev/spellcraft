@@ -30,7 +30,7 @@ KillRewards(victim, attacker, assister) {
 RollOrbDrop(client, float chance) {
   if(GetURandomFloat() < chance)  {
     int orbId = RoundToFloor(GetURandomFloat() * MAXORBS);
-    PrintToServer("orb id = %d. max = %d", orbId, MAXORBS);
+    PrintToServer("orb id = %d. max id = %d", orbId, MAXORBS-1);
     GiveOrbs(client, orbId, 1);
   }
 }

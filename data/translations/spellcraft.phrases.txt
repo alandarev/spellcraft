@@ -51,15 +51,15 @@
   {
     "en"  "Earth Wall"
   }
-  "orb_0"
+  "orb_fire"
   {
     "en"  "Orb of Fire"
   }
-  "orb_1"
+  "orb_frost"
   {
     "en"  "Orb of Frost"
   }
-  "orb_2"
+  "orb_earth"
   {
     "en"  "Orb of Earth"
   }
