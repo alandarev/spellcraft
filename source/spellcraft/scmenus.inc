@@ -150,7 +150,7 @@ public void HeroMenu(int client) {
     int rank = hero.GetSpellRank(0);
 
     Format(buffer, sizeof(buffer), "%T", "spell entry", client, spellName, rank);
-    menu.AddItem(sId, buffer);
+    menu.AddItem(sI, buffer);
   }
 
   /*** Send to client ***/

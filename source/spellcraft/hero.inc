@@ -21,7 +21,7 @@ methodmap Hero  {
     __hero_xp[this] = 0;
     __hero_level[this] = 0;
     for(int i=0; i<MAXSPELLS; i++)  {
-      for(int y=0; y < sizeof(__hero_spells[this][i]); y++) {
+      for(int y=0; y < 2; y++) {
         __hero_spells[this][i][y] = 0;
       }
     }
