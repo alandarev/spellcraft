@@ -9,7 +9,7 @@
 int g_restoreArmor;
 bool g_isFakeDamage;
 
-public Action SC_OnTakeDamageAliveHook(int stage, DamageType dmgType, int &victim, int &attacker, int &inflictor, float &damage, int &weapon,
+public Action SC_OnTakeDamageAliveHook(int stage, DamageType dmgType, int &victim, int &attacker, float &damage, float &multiplier, int &weapon,
   float damageForce[3], float damagePosition[3], int damagecustom)  {
 
   // Restore armor if it was fake damage
@@ -22,7 +22,7 @@ public Action SC_OnTakeDamageAliveHook(int stage, DamageType dmgType, int &victi
   int callResult;
   char sWeapon[50];
   Entity_GetName(weapon, sWeapon, 50);
-  DamageType dmgType;
+  //DamageType dmgType;
   if(g_isFakeDamage)  {
     dmgType = DT_SPELL_DAMAGE;
   }
@@ -31,7 +31,7 @@ public Action SC_OnTakeDamageAliveHook(int stage, DamageType dmgType, int &victi
   }
   
   // Stages
-  for(int stage = 1; stage <= 3; stage++) {
+  for(stage = 1; stage <= 3; stage++) {
     Call_StartForward(g_forward_OnDealDamagePre);
     //SC_OnTakeDamage(int stage, DamageType dmgType, int &victim, int &attacker, float &damage, float &multiplier,char[] weapon)
     Call_PushCell(stage);
