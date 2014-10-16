@@ -19,17 +19,25 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
       g_restoreArmor = 0;
     }
   }
+  int callResult;
 
+  Call_StartForward(g_forward_OnDealDamagePre);
+  //(int victim, int &attacker, bool isBullet, int &inflictor, float &damage, int &weapon);
+  Call_PushCell(victim);
+  Call_PushCell(attacker);
+  Call_PushCell(!g_isFakeDamage);
+  Call_PushCell(inflictor);
+  Call_PushCell(damage);
+  Call_PushCell(weapon);
+  Call_Finish(callResult);
 
-  // Mod code
-  if(!g_isFakeDamage) {
-    // Damage caused by bullet
-    damage = 10.0;
-  }
-  else  {
-    // Damage caused by the mod
-  }
+  return Plugin_Changed;
+}
 
+// Test if forward works
+public Action SC_OnTakeDamagePre(int victim, int &attacker, bool isBullet, int &inflictor, float &damage, int &weapon)  {
+  PrintToChatAll("Forward dmg %.2f > 25", damage);
+  damage = 25;
   return Plugin_Changed;
 }
 

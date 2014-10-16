@@ -1,6 +1,11 @@
 
+
 void RegisterNatives()  {
   CreateNative("SC_DealDamage", Native_DealDamage);
+  
+  //(int victim, int &attacker, bool isBullet, int &inflictor, float &damage, int &weapon);
+  g_forward_OnDealDamagePre = CreateGlobalForward("SC_OnTakeDamagePre", ET_Hook, Param_Cell, Param_Cell, Param_Cell, Param_Cell, Param_Cell, Param_Cell);
+  
 }
 
 public int Native_DealDamage(Handle:plugin, numParams)  {
