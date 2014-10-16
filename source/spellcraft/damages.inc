@@ -38,6 +38,7 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
 // Test if forward works
  public Action SC_OnTakeDamagePre(int &victim, int &attacker, bool isBullet, int &inflictor, float &damage, int &weapon)  {
   PrintToChatAll("Forward dmg %.2f > 25", damage);
+  PrintToServer("Forward dmg %.2f > 25", damage);
   //damage = 25.0;
   return Plugin_Changed;
 }
