@@ -40,14 +40,14 @@ public Action TestDamage(client, args)  {
   int prev = 0;
   for(int i=1; i < GetMaxClients(); i++)  {
     if (IsClientInGame(i) && IsPlayerAlive(i))  {
-      DealDamage(prev, i, "Spell", 20);
+      SC_DealDamage(prev, i, "Spell", 20); // just to test if native works, we can used them inside of the mod too
       prev = i;
     }
   }
   return Plugin_Handled;
 }
 
-stock void DealDamage(attacker, victim, String:weapon[]="Spell", damage=100, bool:headshot=false)
+stock void DealDamage(int attacker, int victim, char[] weapon="Spell", int damage=100)
 {
   char dmg_str[16];
   IntToString(damage,dmg_str,16);

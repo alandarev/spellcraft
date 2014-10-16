@@ -24,6 +24,7 @@
 #include <sdkhooks>
 #include <sdktools>
 #include <smlib> // Do not use smlib's colors, use colors.inc instead.
+#include <SC_natives>
 
 /**
  * Declarations
@@ -45,6 +46,8 @@
 #include "spellcraft/hooks"
 #include "spellcraft/messages"
 
+#include "spellcraft/natives"
+
 /**
  * Content
  */
@@ -62,6 +65,7 @@ public Plugin:myinfo =
 public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
 {
   PrintToServer("----------------|      Spellcraft Load Stage 1    |---------------");
+  RegisterNatives();
   return APLRes_Success;
 }
 
