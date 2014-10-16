@@ -21,8 +21,8 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
     }
   }
   int callResult;
-  char sWeapon[50];
-  Entity_GetName(weapon, sWeapon, 50);
+  char sWeapon[] = "Not Imlemented";;
+  /*Entity_GetName(weapon, sWeapon, 50);*/
   DamageType dmgType;
   if(g_isFakeDamage)  {
     dmgType = DT_SPELL_DAMAGE;
@@ -30,7 +30,7 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
   else  {
     dmgType = DT_BULLET_DAMAGE;
   }
-  
+
   float multiplier = 1.0;
   // Stages
   for(int stage = 1; stage <= 3; stage++) { //that was there earlier try compiling now Ö=
@@ -49,11 +49,11 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
   return Plugin_Changed;
 }
 
-// Test if forward works 
+// Test if forward works
  public Action SC_OnTakeDamage(int stage, DamageType dmgType, int &victim, int &attacker, float &damage, float &multiplier,char[] weapon)  {
   PrintToChatAll("Stage %d, Weapon name is %s", stage, weapon);
   PrintToServer("Stage %d, Weapon name is %s", stage, weapon);
-  
+
 
   return Plugin_Changed;
 }
