@@ -26,9 +26,9 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
   //(int victim, int &attacker, bool isBullet, int &inflictor, float &damage, int &weapon);
   Call_PushCellRef(victim);
   Call_PushCellRef(attacker);
-  Call_PushCellRef(!g_isFakeDamage);
+  Call_PushCell(!g_isFakeDamage);
   Call_PushCellRef(inflictor);
-  Call_PushCellRef(damage);
+  Call_PushFloatRef(damage);
   Call_PushCellRef(weapon);
   Call_Finish(callResult);
 
