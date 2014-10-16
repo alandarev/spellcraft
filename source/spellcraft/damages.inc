@@ -47,7 +47,7 @@ public Action TestDamage(client, args)  {
   return Plugin_Handled;
 }
 
-stock void DealDamage(int attacker, int victim, char[] weapon="Spell", int damage=100)
+stock bool DealDamage(int attacker, int victim, char[] weapon="Spell", int damage=100)
 {
   char dmg_str[16];
   IntToString(damage,dmg_str,16);
@@ -78,6 +78,8 @@ stock void DealDamage(int attacker, int victim, char[] weapon="Spell", int damag
     DispatchKeyValue(victim,"targetname","sc_no_hurtme");
     RemoveEdict(pointHurt);
     g_isFakeDamage = false;
+    return true;
   }
+  return false;
 }
 
