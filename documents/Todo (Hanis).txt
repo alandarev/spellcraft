@@ -1,2 +1,3 @@
 Todo:
 Fix the orb dropping message saying a grammatical error; "There are now 1 new orb in your inventory" or something
+When given the orb drop message, give an option to open menu

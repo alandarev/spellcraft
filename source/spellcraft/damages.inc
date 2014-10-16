@@ -9,7 +9,7 @@
 int g_restoreArmor;
 bool g_isFakeDamage;
 
-public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon,
+public Action SC_OnTakeDamageAliveHook(int stage, DamageType dmgType, int &victim, int &attacker, int &inflictor, float &damage, int &weapon,
   float damageForce[3], float damagePosition[3], int damagecustom)  {
 
   // Restore armor if it was fake damage
@@ -20,26 +20,39 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
     }
   }
   int callResult;
-  damage = 10.0;
-
-  Call_StartForward(g_forward_OnDealDamagePre);
-  //(int victim, int &attacker, bool isBullet, int &inflictor, float &damage, int &weapon);
-  Call_PushCellRef(victim);
-  Call_PushCellRef(attacker);
-  Call_PushCell(!g_isFakeDamage);
-  Call_PushCellRef(inflictor);
-  Call_PushFloatRef(damage);
-  Call_PushCellRef(weapon);
-  Call_Finish(callResult);
+  char sWeapon[50];
+  Entity_GetName(weapon, sWeapon, 50);
+  DamageType dmgType;
+  if(g_isFakeDamage)  {
+    dmgType = DT_SPELL_DAMAGE;
+  }
+  else  {
+    dmgType = DT_BULLET_DAMAGE;
+  }
+  
+  // Stages
+  for(int stage = 1; stage <= 3; stage++) {
+    Call_StartForward(g_forward_OnDealDamagePre);
+    //SC_OnTakeDamage(int stage, DamageType dmgType, int &victim, int &attacker, float &damage, float &multiplier,char[] weapon)
+    Call_PushCell(stage);
+    Call_PushCell(dmgType);
+    Call_PushCellRef(victim);
+    Call_PushCellRef(attacker);
+    Call_PushFloatRef(damage);
+    Call_PushFloatRef(multiplier);
+    Call_PushArray(sWeapon);
+    Call_Finish(callResult);
+  }
 
   return Plugin_Changed;
 }
 
-// Test if forward works
- public Action SC_OnTakeDamagePre(int &victim, int &attacker, bool isBullet, int &inflictor, float &damage, int &weapon)  {
-  PrintToChatAll("Forward dmg %.2f > 25", damage);
-  PrintToServer("Forward dmg %.2f > 25", damage);
-  damage = 25.0;
+// Test if forward works 
+ public Action SC_OnTakeDamage(int stage, DamageType dmgType, int &victim, int &attacker, float &damage, float &multiplier,char[] weapon)  {
+  PrintToChatAll("Stage %d, Weapon name is %s", stage, weapon);
+  PrintToServer("Stage %d, Weapon name is %s", stage, weapon);
+  
+
   return Plugin_Changed;
 }
 

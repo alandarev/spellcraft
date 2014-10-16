@@ -13,7 +13,7 @@ methodmap Spell {
 
 
 
-// Spell Codes
+// Spell Codes - don't use it, it sucks.
 methodmap FrostBolt < Spell {
   public void GetName(char[] buffer, int maxlen)  {
     Format(buffer, maxlen, "frostbolt");

@@ -3,8 +3,8 @@
 void RegisterNatives()  {
   CreateNative("SC_DealDamage", Native_DealDamage);
 
-  //(int victim, int &attacker, bool isBullet, int &inflictor, float &damage, int &weapon);
-  g_forward_OnDealDamagePre = CreateGlobalForward("SC_OnTakeDamagePre", ET_Hook, Param_CellByRef, Param_CellByRef, Param_Cell, Param_CellByRef, Param_FloatByRef, Param_CellByRef);
+  //Action SC_OnTakeDamage(int stage, DamageType dmgType, int &victim, int &attacker, float &damage, float &multiplier,char[] weapon)
+  g_forward_OnDealDamagePre = CreateGlobalForward("SC_OnTakeDamage", ET_Hook, Param_Cell, Param_Cell, Param_CellByRef, Param_CellByRef, Param_CellByRef, Param_FloatByRef, Param_CellByRef);
 
 }
 
