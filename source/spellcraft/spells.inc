@@ -10,3 +10,12 @@ methodmap Spell {
   }
 }
 
+
+
+
+// Spell Codes
+methodmap FrostBolt < Spell {
+  public void GetName(char[] buffer, int maxlen)  {
+    Format(buffer, maxlen, "frostbolt");
+  }
+}

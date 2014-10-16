@@ -2,10 +2,10 @@
 
 void RegisterNatives()  {
   CreateNative("SC_DealDamage", Native_DealDamage);
-  
+
   //(int victim, int &attacker, bool isBullet, int &inflictor, float &damage, int &weapon);
-  g_forward_OnDealDamagePre = CreateGlobalForward("SC_OnTakeDamagePre", ET_Hook, Param_Cell, Param_Cell, Param_Cell, Param_Cell, Param_Cell, Param_Cell);
-  
+  g_forward_OnDealDamagePre = CreateGlobalForward("SC_OnTakeDamagePre", ET_Hook, Param_CellByRef, Param_CellByRef, Param_Cell, Param_CellByRef, Param_FloatByRef, Param_CellByRef);
+
 }
 
 public int Native_DealDamage(Handle:plugin, numParams)  {
@@ -15,7 +15,7 @@ public int Native_DealDamage(Handle:plugin, numParams)  {
   char weapon[50];
   GetNativeString(3, weapon, sizeof(weapon));
   new damage = GetNativeCell(4);
-  
+
   bool success = DealDamage(attacker, victim, weapon, damage);
   return _:success;
 }
