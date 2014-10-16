@@ -20,6 +20,7 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
     }
   }
   int callResult;
+  damage = 10.0;
 
   Call_StartForward(g_forward_OnDealDamagePre);
   //(int victim, int &attacker, bool isBullet, int &inflictor, float &damage, int &weapon);
