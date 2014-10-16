@@ -22,15 +22,15 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
   int callResult;
   damage = 10.0;
 
-  Call_StartForward(g_forward_OnDealDamagePre);
+  //Call_StartForward(g_forward_OnDealDamagePre);
   //(int victim, int &attacker, bool isBullet, int &inflictor, float &damage, int &weapon);
-  Call_PushCell(victim);
+/*   Call_PushCell(victim);
   Call_PushCell(attacker);
   Call_PushCell(!g_isFakeDamage);
   Call_PushCell(inflictor);
   Call_PushCell(damage);
   Call_PushCell(weapon);
-  Call_Finish(callResult);
+  Call_Finish(callResult); */
 
   return Plugin_Changed;
 }
@@ -38,7 +38,7 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
 // Test if forward works
 public Action SC_OnTakeDamagePre(int victim, int &attacker, bool isBullet, int &inflictor, float &damage, int &weapon)  {
   PrintToChatAll("Forward dmg %.2f > 25", damage);
-  damage = 25.0;
+  //damage = 25.0;
   return Plugin_Changed;
 }
 
