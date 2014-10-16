@@ -31,6 +31,7 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
     dmgType = DT_BULLET_DAMAGE;
   }
   
+  float multiplier = 1.0;
   // Stages
   for(int stage = 1; stage <= 3; stage++) { //that was there earlier try compiling now Ö=
     Call_StartForward(g_forward_OnDealDamagePre);
@@ -41,7 +42,7 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
     Call_PushCellRef(attacker);
     Call_PushFloatRef(damage);
     Call_PushFloatRef(multiplier);
-    Call_PushArray(sWeapon);
+    Call_PushString(sWeapon);
     Call_Finish(callResult);
   }
 
