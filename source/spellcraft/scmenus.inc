@@ -199,8 +199,8 @@ public void SpellMenu(int client, int spellSlot) {
   Format(buffer, sizeof(buffer), "%T", "sc delete spell", client);
   menu.AddItem("DeleteSpell", buffer);
   
-  Format(buffer, sizeof(buffer), "%T", "sc spellinfo %s", client);
-  menu.AddItem("DeleteSpell", buffer);
+  Format(buffer, sizeof(buffer), "%T", "sc spellinfo %s", spellname, client);
+  menu.AddItem("SpellInfo", buffer);
 
   menu.Display(client,MENU_TIME_FOREVER);
 
