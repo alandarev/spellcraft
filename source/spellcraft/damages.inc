@@ -51,8 +51,8 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
 
 // Test if forward works
  public Action SC_OnTakeDamage(int stage, DamageType dmgType, int &victim, int &attacker, float &damage, float &multiplier,char[] weapon)  {
-  PrintToChatAll("Stage %d, Weapon name is %s", stage, weapon);
-  PrintToServer("Stage %d, Weapon name is %s", stage, weapon);
+  //PrintToChatAll("Stage %d, Weapon name is %s", stage, weapon);
+  //PrintToServer("Stage %d, Weapon name is %s", stage, weapon);
 
 
   return Plugin_Changed;

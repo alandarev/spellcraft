@@ -227,8 +227,56 @@ public SpellMenuHandler(Menu menu, //rename
     delete menu;
 
 }
+public void ItemsMenu(int client) {
 
+  Menu menu = Menu(ItemsMenuHandler);
+  menu.ExitBackButton = true;
 
+  /*** Title ***/
+  char title[128];
+  Format(title,sizeof(title),"%T","sc items menu",client);
+  menu.SetTitle(title);
+
+  Hero hero = Player(client).hero;
+
+  /*** Menu Items ***/
+  char buffer[200];
+
+  for (int i=0; i<MAXORBS; i++) {
+    char orbName[100];
+    GetOrbName(i, orbName, sizeof(orbName));
+    int orbs = Player(client).GetOrbsAmount(i);
+    char sI[10];
+    IntToString(orbs, sI, sizeof(sI));
+    Format(buffer, sizeof(buffer), "%T", "spell entry", client);
+    Format(buffer, sizeof(buffer), "%s %s", sI, orbName);
+    menu.AddItem(sI, buffer);
+  }
+
+  /*** Send to client ***/
+  menu.Display(client,MENU_TIME_FOREVER);
+
+}
+public ItemsMenuHandler(Menu menu,
+                        MenuAction action,
+                        client, slot) {
+  if(action == MenuAction_Select) {
+    char buffer[100];
+    menu.GetItem(slot,buffer,sizeof(buffer));
+    int spellSlot = StringToInt(buffer);
+
+    SpellMenu(client, spellSlot);
+
+  }
+
+  if(action == MenuAction_Cancel)
+    if(slot == MenuCancel_ExitBack) {
+      MainMenu(client);
+    }
+  if(action == MenuAction_End)
+    delete menu;
+
+}
 
 
 public Action:Open_MainMenu(client, args)

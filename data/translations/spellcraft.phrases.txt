@@ -21,7 +21,7 @@
   }
   "sc items menu"
   {
-    "en"  "Items"
+    "en"  "Orbs"
   }
   "sc premium menu"
   {
@@ -53,15 +53,15 @@
   }
   "orb_fire"
   {
-    "en"  "Orb of Fire"
+    "en"  "Fire Orb"
   }
   "orb_frost"
   {
-    "en"  "Orb of Frost"
+    "en"  "Frost Orb"
   }
   "orb_earth"
   {
-    "en"  "Orb of Earth"
+    "en"  "Earth Orb"
   }
   "panel an drop title"
   {
@@ -72,10 +72,15 @@
     "#format" "{1:s},{2:d}"
     "en"  "You received: {1} x{2}!"
   }
+  "you now have x orb"
+  {
+    "#format" "{1:s},{2:d}"
+    "en"      "There is now {2} {1} in your inventory"
+  }
   "you now have x orbs"
   {
     "#format" "{1:s},{2:d}"
-    "en"      "There are now {2} {1} in your inventory"
+    "en"      "There are now {2} {1}s in your inventory"
   }
   "exit"
   {
