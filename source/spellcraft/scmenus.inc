@@ -241,16 +241,15 @@ public void CombinationMenu(int client, int spellSlot) {
 
   char title[128];
   char spellname[128];
-  char buffer[200];
   int spellComponents[3];
 
   Spell spell = Player(client).hero.GetSpell(spellSlot);
   spell.GetName(spellname,sizeof(spellname));
   for(int i=0;i<3;i++){
-    spellComponents[i]=spell.GetComponent(i);
+    spellComponents[i]=spell.Components.get(i);
     char orbName[100];
     GetOrbName(spellComponents[i],orbName,sizeof(orbName));
-    menu.AddItem("CombinationChangeMenu", orbName)
+    menu.AddItem("CombinationChangeMenu", orbName);
   }
 
   Format(title, sizeof(title), "%T", spellname, client);
