@@ -252,6 +252,7 @@ public void CombinationMenu(int client, int spellSlot) {
     spellComponents[i]=spell.GetComponent(i);
     char orbName[100];
     GetOrbName(spellComponents[i],orbName,sizeof(orbName));
+    Format(orbName, sizeof(orbName), "%T","%s",orbName);
     menu.AddItem("CombinationChangeMenu", orbName);
   }
 
@@ -311,9 +312,9 @@ public void ItemsMenu(int client) {
     char sI[10];
     IntToString(orbs, sI, sizeof(sI));
     if(orbs==1)
-      Format(buffer, sizeof(buffer), "%s %s", sI, orbName);
+      Format(buffer, sizeof(buffer), "%T","%s %s", sI, orbName);
     else
-      Format(buffer, sizeof(buffer), "%s %ss", sI, orbName);
+      Format(buffer, sizeof(buffer), "%T", "%s %ss", sI, orbName);
     menu.AddItem(sI, buffer);
   }
 
