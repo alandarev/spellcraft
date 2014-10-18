@@ -245,10 +245,14 @@ public void ItemsMenu(int client) {
   for (int i=0; i<MAXORBS; i++) {
     char orbName[100];
     GetOrbName(i, orbName, sizeof(orbName));
+    Format(orbName, sizeof(orbName), "%T", orbName);
     int orbs = Player(client).GetOrbsAmount(i);
     char sI[10];
     IntToString(orbs, sI, sizeof(sI));
-    Format(buffer, sizeof(buffer), "%s %s", sI, orbName);
+    if(orbs>1)
+      Format(buffer, sizeof(buffer), "%s %s", sI, orbName);
+    else
+      Format(buffer, sizeof(buffer), "%s %ss", sI, orbName);
     menu.AddItem(sI, buffer);
   }
 
