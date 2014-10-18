@@ -59,6 +59,25 @@
   {
     "en"  "Earth Wall"
   }
+  "2string"
+  {
+    "#format" "{1:s},{2:s}"
+    "en"  "{1} {2}"
+  }
+  "2string_plural"
+  {
+    "#format" "{1:s},{2:s}"
+    "en"  "{1} {2}s"
+  }
+  "sc spellinfo string"
+  {
+    "#format" "{1:s}"
+    "en"  "sc spellinfo {1}"
+  }
+  "sc spellinfo menu"
+  {
+    "Spell info"
+  }
   "orb_fire"
   {
     "en"  "Fire Orb"
