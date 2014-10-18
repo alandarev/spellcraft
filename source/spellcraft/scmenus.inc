@@ -240,12 +240,17 @@ public void ItemsMenu(int client) {
   //Hero hero = Player(client).hero;
 
   /*** Menu Items ***/
-  char buffer[200];
+  char buffer[200]; //Hardcode
 
   for (int i=0; i<MAXORBS; i++) {
     char orbName[100];
-    GetOrbName(i, orbName, sizeof(orbName));
-    Format(orbName, sizeof(orbName), "%T", orbName);
+    if(i == 1)
+      Format(orbName, sizeof(orbName), "%T", "orb_fire");
+    if(i == 2)
+      Format(orbName, sizeof(orbName), "%T", "orb_frost");
+    if(i == 3)
+      Format(orbName, sizeof(orbName), "%T", "orb_earth");
+
     int orbs = Player(client).GetOrbsAmount(i);
     char sI[10];
     IntToString(orbs, sI, sizeof(sI));
