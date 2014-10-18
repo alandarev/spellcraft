@@ -247,7 +247,7 @@ public void CombinationMenu(int client, int spellSlot) {
   Spell spell = Player(client).hero.GetSpell(spellSlot);
   spell.GetName(spellname,sizeof(spellname));
   for(int i=0;i<3;i++){
-    spellComponent[i]=spell.GetComponent(i);
+    spellComponents[i]=spell.GetComponent(i);
     char orbName[100];
     GetOrbName(spellComponent[i],orbName,sizeof(orbName));
     menu.AddItem("CombinationChangeMenu", orbName)

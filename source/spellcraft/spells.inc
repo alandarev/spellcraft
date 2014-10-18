@@ -14,12 +14,11 @@ methodmap Spell {
       return GetComponent(this);
     }
   }
-  public int GetComponent(int slot)
+}
+  stock int GetComponent(int slot)
   {
     return __components[slot];
   }
-}
-
 
 
 
