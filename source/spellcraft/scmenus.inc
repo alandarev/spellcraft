@@ -303,14 +303,14 @@ public void ItemsMenu(int client) {
   //Hero hero = Player(client).hero;
 
   /*** Menu Items ***/
-  char buffer[200]; //Hardcode
+  char buffer[200];
   for(int i=0;i<MAXORBS;i++){
     char orbName[100];
     GetOrbName(i,orbName,sizeof(orbName));
     int orbs = Player(client).GetOrbsAmount(i);
     char sI[10];
     IntToString(orbs, sI, sizeof(sI));
-    if(orbs=1)
+    if(orbs==1)
       Format(buffer, sizeof(buffer), "%s %s", sI, orbName);
     else
       Format(buffer, sizeof(buffer), "%s %ss", sI, orbName);
