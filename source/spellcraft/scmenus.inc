@@ -189,12 +189,15 @@ public void SpellMenu(int client, int spellSlot) {
   Spell spell = Player(client).hero.GetSpell(spellSlot);
   spell.GetName(spellname,sizeof(spellname));
 
-  Format(title, sizeof(title), "%T", "placeholder", client);
+  Format(title, sizeof(title), "%T", spellname, client);
   menu.SetTitle(title);
 
   char buffer[200];
-  Format(buffer, sizeof(buffer), "%T", spellname, client);
-  menu.AddItem("meta-data", buffer);
+  Format(buffer, sizeof(buffer), "%T", "sc combination menu", client);
+  menu.AddItem("CombinationMenu", buffer);
+  
+  Format(buffer, sizeof(buffer), "%T", "sc delete spell", client);
+  menu.AddItem("DeleteSpell", buffer);
 
   menu.Display(client,MENU_TIME_FOREVER);
 
@@ -206,7 +209,10 @@ public SpellMenuHandler(Menu menu, //rename
   if(action == MenuAction_Select) {
     char buffer[100];
     menu.GetItem(slot,buffer,sizeof(buffer));
-
+    int spellSlot = StringToInt(buffer);
+    
+    CombinationMenu(client, spellSlot);
+    
     //Call function
     Function func = GetFunctionByName(INVALID_HANDLE, buffer);
     Call_StartFunction(INVALID_HANDLE, func);
@@ -227,6 +233,61 @@ public SpellMenuHandler(Menu menu, //rename
     delete menu;
 
 }
+
+public void CombinationMenu(int client, int spellSlot) {
+
+  Menu menu = Menu(CombinationMenuHandler);
+  menu.ExitBackButton = true;
+
+  char title[128];
+  char spellname[128];
+  char buffer[200];
+  int spellComponents[3];
+
+  Spell spell = Player(client).hero.GetSpell(spellSlot);
+  spell.GetName(spellname,sizeof(spellname));
+  for(int i=0;i<3;i++){
+    spellComponent[i]=spell.GetComponent(i);
+    char orbName[100];
+    GetOrbName(spellComponent[i],orbName,sizeof(orbName));
+    menu.AddItem("CombinationChangeMenu", orbName)
+  }
+
+  Format(title, sizeof(title), "%T", spellname, client);
+  menu.SetTitle(title);
+
+  menu.Display(client,MENU_TIME_FOREVER);
+
+}
+
+public CombinationMenuHandler(Menu menu, //rename
+                        MenuAction action,
+                        client, slot) {
+  if(action == MenuAction_Select) {
+    char buffer[100];
+    menu.GetItem(slot,buffer,sizeof(buffer));
+    
+    //Call function
+    Function func = GetFunctionByName(INVALID_HANDLE, buffer);
+    Call_StartFunction(INVALID_HANDLE, func);
+    Call_PushCell(client);
+    if(Call_Finish() != SP_ERROR_NONE)  {
+      char err[100];
+      Format(err,100,"[SC] Could not callback the function: %s",buffer);
+      LogError(err);
+    }
+
+  }
+
+  if(action == MenuAction_Cancel)
+    if(slot == MenuCancel_ExitBack) {
+      HeroMenu(client);
+    }
+  if(action == MenuAction_End)
+    delete menu;
+
+}
+
 public void ItemsMenu(int client) {
 
   Menu menu = Menu(ItemsMenuHandler);

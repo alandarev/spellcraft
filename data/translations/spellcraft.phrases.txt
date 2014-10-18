@@ -35,6 +35,14 @@
   {
     "en"  "Help"
   }
+  "sc combination menu"
+  {
+    "en"   "Make a new spell"
+  }
+  "sc delete spell"
+  {
+    "en"   "Clear this spell slot"
+  }
   "sc auction"
   {
     "en"  "Auction"
