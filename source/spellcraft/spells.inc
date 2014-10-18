@@ -1,4 +1,4 @@
-int __components[3];
+int __components[3]={0,1,2};
 
 methodmap Spell {
   public Spell(int id)  {
@@ -8,14 +8,14 @@ methodmap Spell {
     //TODO
     Format(buffer, maxlen, "no spell");
   }
-  property int Components
+  /*property int Components
   {
     public get()  {
       return GetComponent(this);
     }
-  }
+  }*/
 }
-  stock int GetComponent(int slot)
+  public int GetComponent(int slot)
   {
     return __components[slot];
   }
