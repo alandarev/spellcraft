@@ -199,7 +199,7 @@ public void SpellMenu(int client, int spellSlot) {
   Format(buffer, sizeof(buffer), "%T", "sc delete spell", client);
   menu.AddItem("DeleteSpell", buffer);
   
-  Format(buffer, sizeof(buffer), "%T", "sc spellinfo %s", spellname, client);
+  Format(buffer, sizeof(buffer),"%T", "sc spellinfo %s", client, spellname);
   menu.AddItem("SpellInfo", buffer);
 
   menu.Display(client,MENU_TIME_FOREVER);
@@ -311,10 +311,12 @@ public void ItemsMenu(int client) {
     int orbs = Player(client).GetOrbsAmount(i);
     char sI[10];
     IntToString(orbs, sI, sizeof(sI));
-    if(orbs==1)
-      Format(buffer, sizeof(buffer), "%T","%s %s", sI, orbName);
-    else
-      Format(buffer, sizeof(buffer), "%T", "%s %ss", sI, orbName);
+    if(orbs==1){
+      Format(buffer, sizeof(buffer), "%T","%s %s", client, sI, orbName);
+      }
+    else{
+      Format(buffer, sizeof(buffer), "%T", "%s %ss", client, sI, orbName);
+      }
     menu.AddItem(sI, buffer);
   }
 
