@@ -37,7 +37,7 @@
   }
   "sc combination menu"
   {
-    "en"   "Make a new spell"
+    "en"   "Change this spell"
   }
   "sc delete spell"
   {
