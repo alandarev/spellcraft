@@ -8,17 +8,17 @@ methodmap Spell {
     //TODO
     Format(buffer, maxlen, "no spell");
   }
-  property int Components
+  /*property int Components
   {
     public get()  {
       return GetComponent(this);
     }
-  }
-}
-  stock int GetComponent(any index)
+  }*/
+  public int GetComponent(any index)
   {
     return __components[index];
   }
+}
 
 
 
