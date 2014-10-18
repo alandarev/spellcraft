@@ -245,11 +245,11 @@ public void ItemsMenu(int client) {
   for (int i=0; i<MAXORBS; i++) {
     char orbName[100];
     if(i == 1)
-      Format(orbName, sizeof(orbName), "%T", "orb_fire");
+      Format(orbName, sizeof(orbName), "%T", "orb_fire", client);
     if(i == 2)
-      Format(orbName, sizeof(orbName), "%T", "orb_frost");
+      Format(orbName, sizeof(orbName), "%T", "orb_frost", client);
     if(i == 3)
-      Format(orbName, sizeof(orbName), "%T", "orb_earth");
+      Format(orbName, sizeof(orbName), "%T", "orb_earth", client);
 
     int orbs = Player(client).GetOrbsAmount(i);
     char sI[10];
