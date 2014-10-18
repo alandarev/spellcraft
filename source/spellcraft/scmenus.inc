@@ -237,7 +237,7 @@ public void ItemsMenu(int client) {
   Format(title,sizeof(title),"%T","sc items menu",client);
   menu.SetTitle(title);
 
-  Hero hero = Player(client).hero;
+  //Hero hero = Player(client).hero;
 
   /*** Menu Items ***/
   char buffer[200];

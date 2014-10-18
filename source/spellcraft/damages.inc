@@ -21,7 +21,7 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
     }
   }
   int callResult;
-  char sWeapon[] = "Not Imlemented";;
+  //char sWeapon[] = "Not Imlemented";;
   /*Entity_GetName(weapon, sWeapon, 50);*/
   DamageType dmgType;
   if(g_isFakeDamage)  {
@@ -42,7 +42,7 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
     Call_PushCellRef(attacker);
     Call_PushFloatRef(damage);
     Call_PushFloatRef(multiplier);
-    Call_PushString(sWeapon);
+    //Call_PushString(sWeapon);
     Call_Finish(callResult);
   }
 
