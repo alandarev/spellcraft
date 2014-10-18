@@ -248,7 +248,6 @@ public void ItemsMenu(int client) {
     int orbs = Player(client).GetOrbsAmount(i);
     char sI[10];
     IntToString(orbs, sI, sizeof(sI));
-    Format(buffer, sizeof(buffer), "%T", "spell entry", client);
     Format(buffer, sizeof(buffer), "%s %s", sI, orbName);
     menu.AddItem(sI, buffer);
   }
