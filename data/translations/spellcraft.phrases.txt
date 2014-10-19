@@ -59,16 +59,6 @@
   {
     "en"  "Earth Wall"
   }
-  "2string"
-  {
-    "#format" "{1:s},{2:s}"
-    "en"  "{1} {2}"
-  }
-  "2string_plural"
-  {
-    "#format" "{1:s},{2:s}"
-    "en"  "{1} {2}s"
-  }
   "sc spellinfo string"
   {
     "#format" "{1:s}"

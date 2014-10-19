@@ -252,7 +252,7 @@ public void CombinationMenu(int client, int spellSlot) {
     spellComponents[i]=spell.GetComponent(i);
     char orbName[100];
     GetOrbName(spellComponents[i],orbName,sizeof(orbName));
-    Format(orbName, sizeof(orbName), "%T","%s",orbName);
+    Format(orbName,sizeof(orbName),"%T", orbName, client);
     menu.AddItem("CombinationChangeMenu", orbName);
   }
 
@@ -311,12 +311,9 @@ public void ItemsMenu(int client) {
     int orbs = Player(client).GetOrbsAmount(i);
     char sI[10];
     IntToString(orbs, sI, sizeof(sI));
-    if(orbs==1){
-      Format(buffer, sizeof(buffer), "%T","2string", client, sI, orbName);
-      }
-    else{
-      Format(buffer, sizeof(buffer), "%T", "2string_plural", client, sI, orbName);
-      }
+    Format(orbName,sizeof(orbName),"%T", orbName, client);
+    if(orbs!=1)
+      Format(orbName,sizeof(orbName), "%ss", orbName);
     menu.AddItem(sI, buffer);
   }
 
