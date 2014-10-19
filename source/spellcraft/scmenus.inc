@@ -149,7 +149,7 @@ public void HeroMenu(int client) {
     spell.GetName(spellName, sizeof(spellName));
     int rank = hero.GetSpellRank(0);
 
-    Format(buffer, sizeof(buffer), "%T", "spell entry", client, spellName, rank);
+    Format(buffer, sizeof(buffer), "spell entry", client, spellName, rank);
     menu.AddItem(sI, buffer);
   }
 
