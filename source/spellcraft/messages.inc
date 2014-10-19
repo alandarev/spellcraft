@@ -29,10 +29,12 @@ void AnnounceDrop(int client, int orbId, int amount) {
     Format(message, sizeof(message), "%T", "you now have x orb", client, orbName, has);
   DrawPanelText(panel, message);
   DrawPanelItem(panel, " \n", ITEMDRAW_RAWLINE|ITEMDRAW_SPACER);
-
+  
   SetPanelCurrentKey(panel, 3);
   Format(message, sizeof(message), "%T", "exit", client);
   DrawPanelItem(panel, message, ITEMDRAW_CONTROL);
+  
+  
   SendPanelToClient(panel, client, PanelHandler, 15);
 
   CloseHandle(panel);

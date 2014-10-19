@@ -33,7 +33,7 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
 
   float multiplier = 1.0;
   // Stages
-  for(int stage = 1; stage <= 3; stage++) { //that was there earlier try compiling now Ö=
+  for(int stage = 1; stage <= 3; stage++) {
     Call_StartForward(g_forward_OnDealDamagePre);
     //SC_OnTakeDamage(int stage, DamageType dmgType, int &victim, int &attacker, float &damage, float &multiplier,char[] weapon)
     Call_PushCell(stage);
@@ -61,7 +61,7 @@ public Action SC_OnTakeDamageAliveHook(int victim, int &attacker, int &inflictor
 public void SC_OnTakeDamagePostHook(int victim, int attacker, int inflictor, float damage, int damagetype) {
 }
 
-public Action TestDamage(client, args)  {
+/*public Action TestDamage(client, args)  {
   int prev = 0;
   for(int i=1; i < GetMaxClients(); i++)  {
     if (IsClientInGame(i) && IsPlayerAlive(i))  {
@@ -70,7 +70,7 @@ public Action TestDamage(client, args)  {
     }
   }
   return Plugin_Handled;
-}
+}*/
 
 stock bool DealDamage(int attacker, int victim, char[] weapon="Spell", int damage=100)
 {

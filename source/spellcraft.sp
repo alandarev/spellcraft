@@ -85,7 +85,7 @@ public void OnPluginStart() {
   RegConsoleCmd("scmenu", Open_MainMenu);
 
   RegConsoleCmd("test_colors", TestColors);
-  RegConsoleCmd("hurt_all", TestDamage);
+  //RegConsoleCmd("hurt_all", TestDamage);
 
   // Some testing
   Player p = Player(1);
