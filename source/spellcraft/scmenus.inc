@@ -149,7 +149,7 @@ public void HeroMenu(int client) {
     spell.GetName(spellName, sizeof(spellName));
     int rank = hero.GetSpellRank(0);
 
-    Format(buffer, sizeof(buffer), "spell entry", client, spellName, rank);
+    Format(buffer, sizeof(buffer),"%T", "spell entry", client, spellName, rank);
     menu.AddItem(sI, buffer);
   }
 
@@ -199,11 +199,8 @@ public void SpellMenu(int client, int spellSlot) {
   Format(buffer, sizeof(buffer), "%T", "sc delete spell", client);
   menu.AddItem("DeleteSpell", buffer);
   
-  Format(buffer, sizeof(buffer),"%T", "sc spellinfo menu", client);
-  menu.AddItem("SpellInfo", buffer);
 
   menu.Display(client,MENU_TIME_FOREVER);
-
 }
 
 public SpellMenuHandler(Menu menu, //rename
@@ -307,15 +304,16 @@ public void ItemsMenu(int client) {
   char buffer[200];
   for(int i=0;i<MAXORBS;i++){
     char orbName[100];
+    char testing[100];
     GetOrbName(i,orbName,sizeof(orbName));
+    Format(orbName, sizeof(orbName), "%T", orbName, client);
     int orbs = Player(client).GetOrbsAmount(i);
     char sI[10];
     IntToString(orbs, sI, sizeof(sI));
-    Format(orbName,sizeof(orbName),"orb_fire", client);
-    if(orbs!=1)
-      Format(buffer,sizeof(buffer), "%ss", "orb_fires");
+    if(orbs>1)
+      Format(buffer, sizeof(buffer), "%s %ss", sI, orbName);
     else
-      strcopy(buffer, sizeof(orbName), orbName);
+      Format(buffer,sizeof(buffer),"%s %s", sI, orbName);
     menu.AddItem(sI, buffer);
   }
 
@@ -331,7 +329,6 @@ public ItemsMenuHandler(Menu menu,
     menu.GetItem(slot,buffer,sizeof(buffer));
     int spellSlot = StringToInt(buffer);
 
-    SpellMenu(client, spellSlot);
 
   }
 
