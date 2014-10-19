@@ -59,11 +59,6 @@
   {
     "en"  "Earth Wall"
   }
-  "sc spellinfo string"
-  {
-    "#format" "{1:s}"
-    "en"  "sc spellinfo {1}"
-  }
   "sc spellinfo menu"
   {
     "Spell info"

@@ -313,7 +313,9 @@ public void ItemsMenu(int client) {
     IntToString(orbs, sI, sizeof(sI));
     Format(orbName,sizeof(orbName),"%T", orbName, client);
     if(orbs!=1)
-      Format(orbName,sizeof(orbName), "%ss", orbName);
+      Format(buffer,sizeof(buffer), "%ss", orbName);
+    else
+      strcopy(buffer, sizeof(orbName), orbName);
     menu.AddItem(sI, buffer);
   }
 
