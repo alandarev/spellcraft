@@ -311,9 +311,9 @@ public void ItemsMenu(int client) {
     int orbs = Player(client).GetOrbsAmount(i);
     char sI[10];
     IntToString(orbs, sI, sizeof(sI));
-    Format(orbName,sizeof(orbName),"%T", "orb_fire", client);
+    Format(orbName,sizeof(orbName),"orb_fire", client);
     if(orbs!=1)
-      Format(buffer,sizeof(buffer), "%ss", "orb_fire");
+      Format(buffer,sizeof(buffer), "%ss", "orb_fires");
     else
       strcopy(buffer, sizeof(orbName), orbName);
     menu.AddItem(sI, buffer);
