@@ -194,7 +194,7 @@ public void SpellMenu(int client, int spellSlot) {
 
   char buffer[200];
   
-  Format(buffer, sizeof(buffer), "%", "sc levelup menu", client);
+  Format(buffer, sizeof(buffer), "%T", "sc levelup menu", client);
   menu.AddItem("LevelUpMenu", buffer);
   
   Format(buffer, sizeof(buffer), "%T", "sc combination menu", client);
