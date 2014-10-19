@@ -61,7 +61,7 @@
   }
   "sc spellinfo menu"
   {
-    "Spell info"
+    "en"  "Spell info"
   }
   "orb_fire"
   {

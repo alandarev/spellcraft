@@ -304,7 +304,6 @@ public void ItemsMenu(int client) {
   char buffer[200];
   for(int i=0;i<MAXORBS;i++){
     char orbName[100];
-    char testing[100];
     GetOrbName(i,orbName,sizeof(orbName));
     Format(orbName, sizeof(orbName), "%T", orbName, client);
     int orbs = Player(client).GetOrbsAmount(i);
@@ -327,9 +326,6 @@ public ItemsMenuHandler(Menu menu,
   if(action == MenuAction_Select) {
     char buffer[100];
     menu.GetItem(slot,buffer,sizeof(buffer));
-    int spellSlot = StringToInt(buffer);
-
-
   }
 
   if(action == MenuAction_Cancel)
