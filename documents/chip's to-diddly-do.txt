@@ -1,0 +1,5 @@
+- add spellinfo menu accessible from spell menu
+- add help menu
+- add spell slot clear button accessible from spell menu
+- add levelup menu(once this is a thing)
+- add chat commands to access various menus

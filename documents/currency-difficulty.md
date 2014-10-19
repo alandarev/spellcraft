@@ -10,7 +10,9 @@ Give your ideas on how we can design healthy economy of the mod. The main concer
 - Level up
 
 ## Currency Sink
-- Leveling up spells
+- Leveling up spells // Combine same-type orbs together to make stronger ones which in turn make stronger spells. Gives you something to do with spare orbs.
 - Reset spell slots
 - Buy more character slots (?)
 - Auction tax (?)
+
+// 

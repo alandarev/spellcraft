@@ -35,6 +35,10 @@
   {
     "en"  "Help"
   }
+  "sc levelup menu"
+  {
+    "en"  "Level up this spell"
+  }
   "sc combination menu"
   {
     "en"   "Change this spell"

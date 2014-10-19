@@ -193,13 +193,19 @@ public void SpellMenu(int client, int spellSlot) {
   menu.SetTitle(title);
 
   char buffer[200];
+  
+  Format(buffer, sizeof(buffer), "%", "sc levelup menu", client);
+  menu.AddItem("LevelUpMenu", buffer);
+  
   Format(buffer, sizeof(buffer), "%T", "sc combination menu", client);
   menu.AddItem("CombinationMenu", buffer);
   
   Format(buffer, sizeof(buffer), "%T", "sc delete spell", client);
   menu.AddItem("DeleteSpell", buffer);
   
-
+  Format(buffer, sizeof(buffer),"%T", "sc spellinfo menu", client);
+  menu.AddItem("SpellInfo", buffer);
+  
   menu.Display(client,MENU_TIME_FOREVER);
 }
 
