@@ -16,6 +16,17 @@ enum DamageType {
 native bool SC_DealDamage(int attacker, int victim, char[] weapon="Spell", int damage=100);
 
 /**
+ * Is Spellcraft ready for registering spells
+ */
+native bool SC_IsReady();
+
+/**
+ * Register the spell into the Spellcraft mod.
+ * Needs to happen after SC_OnReady is called, or SC_IsReady is set to true.
+ */
+native int SC_RegisterSpell(char[] name, char[] orbOne, char[] orbTwo, char[] orbThree);
+
+/**
  * Damage deal forward before it happens
  * Damage can be modified.
  * Note: It is better not to create new damage event inside of this forward. Use Damage Post forward instead.
@@ -35,3 +46,5 @@ native bool SC_DealDamage(int attacker, int victim, char[] weapon="Spell", int d
  * }
  */
 forward Action SC_OnTakeDamage(int stage, DamageType dmgType, int &victim, int &attacker, float &damage, float &multiplier,char[] weapon);
+
+forward void SC_OnReady();

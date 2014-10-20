@@ -8,7 +8,7 @@ methodmap Database {
     return Database:0;
   }
   public void Connect() {
-
+    SetReady();
   }
   public void LoadPlayer(int client) {
     Player player = Player(client);
@@ -26,3 +26,21 @@ methodmap Database {
 
   }
 }
+
+stock void SetReady() {
+  g_isReady = true;
+  Call_StartForward(g_forward_OnReady);
+  int callResult;
+  Call_Finish(callResult);
+}
+
+stock int RegisterSpell(char[] name, int orbs[3])  {
+  int id = 1; // TODO
+  strcopy(g_spellName[id], 30, name);
+  for(int i=0; i<3; i++)  {
+    g_spellOrbs[id][i] = orbs[i];
+  }
+  return id;
+}
+
+

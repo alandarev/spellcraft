@@ -3,7 +3,7 @@
 */
 
 #define MAXHEROES 10
-#define MAXSPELLS 4
+#define MAXHEROSPELLS 4
 
 // Array size to fit all the players multiplied by maximum heroes they can have
 #define PHMAX MAXPLAYERS * MAXHEROES
@@ -11,7 +11,7 @@
 
 int __hero_xp[PHMAX];
 int __hero_level[PHMAX];
-int __hero_spells[PHMAX][MAXSPELLS][2];
+int __hero_spells[PHMAX][MAXHEROSPELLS][2];
 
 methodmap Hero  {
   /**
@@ -20,7 +20,7 @@ methodmap Hero  {
   public void clean() {
     __hero_xp[this] = 0;
     __hero_level[this] = 0;
-    for(int i=0; i<MAXSPELLS; i++)  {
+    for(int i=0; i<MAXHEROSPELLS; i++)  {
       for(int y=0; y < 2; y++) {
         __hero_spells[this][i][y] = 0;
       }
