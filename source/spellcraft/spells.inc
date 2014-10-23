@@ -36,7 +36,7 @@ public SetCdSpell(client,spellid,Float:cd)
 
 public GetCDSpell(client,spellid)
 {
-  return ClientCDSpells[client][spellid] - GetTickedTime();
+  return (ClientCDSpells[client][spellid] - GetTickedTime());
 }
 
 bool:TryCast(client, spellid, rank)  {
@@ -70,7 +70,7 @@ stock GetSpellName(spellid)
   else
     Format(spellName,sizeof(spellName),"%T","no spell");
   
-  return spellName;
+  return spellName[30];
 }
 public GetComponent(any index)
 {
