@@ -1,25 +1,5 @@
 int __components[3]={0,1,2};
 
-methodmap Spell {
-  public Spell(int id)  {
-    return Spell:id;
-  }
-  public void GetName(char[] buffer, int maxlen)  {
-    //TODO
-    Format(buffer, maxlen, "no spell");
-  }
-  /*property int Components
-  {
-    public get()  {
-      return GetComponent(this);
-    }
-  }*/
-  public int GetComponent(any index)
-  {
-    return __components[index];
-  }
-}
-
 public Action:SC_SpellCmd(client,args)
 {
   if (args < 1)
@@ -63,8 +43,7 @@ public GetCdSpell(client,spellid)
 bool:TryCast(client, spellid, rank)  {
 
   char trans[128];
-  float timeleft;
-  timeleft = GetCDSpell(client,spellid);
+  float timeleft = GetCDSpell(client,spellid);
   if(timeleft > 0.0)  {
     Format(trans,sizeof(trans),"%T","spell cooldown",timeleft);
     CPrintToChat(client, "%s", trans);
@@ -83,6 +62,15 @@ public RunSpell(client,spellid,rank)
 
 
 
+}
+public GetSpellName(spellid)
+{
+  char spellname[255];
+  if(spellid == 1)
+    Format(spellname,sizeof(spellname),"%T","fireball name");
+
+  
+  return spellname;
 }
 
 
