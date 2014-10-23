@@ -48,10 +48,12 @@
 
 #include "spellcraft/natives"
 
+
 /**
  * Content
  */
 Database DB;
+
 
 public Plugin:myinfo =
 {
@@ -83,7 +85,8 @@ public void OnPluginStart() {
   RegConsoleCmd("menu", Open_MainMenu);
   RegConsoleCmd("wcmenu", Open_MainMenu);
   RegConsoleCmd("scmenu", Open_MainMenu);
-
+  RegConsoleCmd("spell",SC_SpellCmd);  
+  
   RegConsoleCmd("test_colors", TestColors);
   //RegConsoleCmd("hurt_all", TestDamage);
 

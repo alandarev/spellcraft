@@ -10,6 +10,8 @@
  * =====================================================================================
  */
 
+//Spell ID: 1
+ 
 #include <SC_natives>
 #include <SC_spell>
 
@@ -27,5 +29,3 @@ public Plugin:myinfo =
 stock LoadSpell() {
   SC_RegisterSpell(NAME, "fire", "fire", "fire");
 }
-
-

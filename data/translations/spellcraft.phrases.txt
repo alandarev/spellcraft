@@ -107,4 +107,9 @@
     "#format" "{1:s},{2:d}"
     "en"  "{1} (Rank {2})"
   }
+  "spell cooldown"
+  {
+    "#format" "{1:f}"
+    "en"  "Cooldown remaining: {1}"
+  }
 }

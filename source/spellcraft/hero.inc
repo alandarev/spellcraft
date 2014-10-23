@@ -12,6 +12,7 @@
 int __hero_xp[PHMAX];
 int __hero_level[PHMAX];
 int __hero_spells[PHMAX][MAXHEROSPELLS][2];
+float ClientCDSpells[64][MAXHEROSPELLS];
 
 methodmap Hero  {
   /**
@@ -104,7 +105,6 @@ stock int HeroIndexToSlot(any index)  {
  */
 
 int _getRequiredXp(level) {
-  // TODO: hani? :)
   int levelReq = RoundToNearest(140.0 * 1.22 ^ float(level));
   return levelReq;
 }

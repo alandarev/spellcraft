@@ -20,4 +20,3 @@ void __loadSpell()  {
 public SC_OnReady() {
   __loadSpell();
 }
-
