@@ -136,7 +136,7 @@ public void HeroMenu(int client) {
   Format(title,sizeof(title),"%T","sc hero menu",client);
   menu.SetTitle(title);
 
-  char[] spellName;
+  new String:spellName[30];
   Hero hero = Player(client).hero;
 
   /*** Menu Items ***/
@@ -185,7 +185,7 @@ public void SpellMenu(int client, int spellSlot) {
   menu.ExitBackButton = true;
 
   char title[128];
-  char[] spellName;
+  new String:spellName[30];
 
   int spell = Player(client).hero.GetSpell(spellSlot);
   spellName = GetSpellName(spell);
@@ -247,7 +247,7 @@ public void CombinationMenu(int client, int spellSlot) {
   menu.ExitBackButton = true;
 
   char title[128];
-  char[] spellName;
+  new String:spellName[30];
   int spellComponents[3];
 
   int spell = Player(client).hero.GetSpell(spellSlot);

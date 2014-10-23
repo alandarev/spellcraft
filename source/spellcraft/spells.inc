@@ -68,7 +68,8 @@ public GetSpellName(spellid)
   char spellname[255];
   if(spellid == 1)
     Format(spellname,sizeof(spellname),"%T","fireball name");
-
+  else
+    Format(spellname,sizeof(spellname),"%T","no spell");
   
   return spellname;
 }
