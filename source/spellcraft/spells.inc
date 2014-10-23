@@ -30,8 +30,7 @@ public Action:SC_SpellCmd(client,args)
    decl String:Sspell[5];
    GetCmdArg(1, Sspell, sizeof(Sspell));
    new spell=StringToInt(Sspell);
-   char maxspell[5];
-   maxspell = IntToString(MAXHEROSPELLS);
+   char[] maxspell = IntToString(MAXHEROSPELLS);
    if((spell>=MAXHEROSPELLS)||(spell<=0))
    {
 		ReplyToCommand(client, "[SC] spell must be 1-%s",maxspell);
