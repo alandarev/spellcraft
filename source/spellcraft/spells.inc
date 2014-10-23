@@ -37,7 +37,7 @@ public SetCdSpell(client,spellid,Float:cd)
 public GetCDSpell(client,spellid)
 {
   float timeleft = ClientCDSpells[client][spellid] - GetTickedTime();
-  return timeleft;
+  return float(timeleft);
 }
 
 bool:TryCast(client, spellid, rank)  {
@@ -63,7 +63,7 @@ public RunSpell(client,spellid,rank)
 
 
 }
-public GetSpellName(spellid)
+stock GetSpellName(spellid)
 {
   new String:spellName[30];
   if(spellid == 1)
