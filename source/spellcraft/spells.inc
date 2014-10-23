@@ -63,13 +63,12 @@ public RunSpell(client,spellid,rank)
 
 
 }
-public GetSpellName(spellid)
+public GetSpellName(spellid,spellName)
 {
-  new String:spellname[30];
   if(spellid == 1)
-    Format(spellname,sizeof(spellname),"%T","fireball name");
+    Format(spellName,sizeof(spellName),"%T","fireball name");
   else
-    Format(spellname,sizeof(spellname),"%T","no spell");
+    Format(spellName,sizeof(spellName),"%T","no spell");
   
   return spellname;
 }
