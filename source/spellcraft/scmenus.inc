@@ -147,7 +147,7 @@ public void HeroMenu(int client) {
     IntToString(i, sI, sizeof(sI));
     int spell = hero.GetSpell(0);
 
-    spellName = GetSpellName(spell);
+    spellName[30] = GetSpellName(spell);
     int rank = hero.GetSpellRank(0);
 
     Format(buffer, sizeof(buffer),"%T", "spell entry", client, spellName, rank);
