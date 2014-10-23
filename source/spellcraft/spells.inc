@@ -34,7 +34,7 @@ public SetCdSpell(client,spellid,Float:cd)
   ClientCDSpells[client][spellid]=GetTickedTime()+cd;
 }
 
-public GetCdSpell(client,spellid)
+public GetCDSpell(client,spellid)
 {
   float timeleft = ClientCDSpells[client][spellid] - GetTickedTime();
   return timeleft;
@@ -65,7 +65,7 @@ public RunSpell(client,spellid,rank)
 }
 public GetSpellName(spellid)
 {
-  char spellname[30];
+  new String:spellname[30];
   if(spellid == 1)
     Format(spellname,sizeof(spellname),"%T","fireball name");
   else
