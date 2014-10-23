@@ -136,7 +136,7 @@ public void HeroMenu(int client) {
   Format(title,sizeof(title),"%T","sc hero menu",client);
   menu.SetTitle(title);
 
-  char spellName[30];
+  char[] spellName;
   Hero hero = Player(client).hero;
 
   /*** Menu Items ***/
@@ -185,12 +185,12 @@ public void SpellMenu(int client, int spellSlot) {
   menu.ExitBackButton = true;
 
   char title[128];
-  char spellname[128];
+  char[] spellName;
 
   int spell = Player(client).hero.GetSpell(spellSlot);
   spellName = GetSpellName(spell);
 
-  Format(title, sizeof(title), "%T", spellname, client);
+  Format(title, sizeof(title), "%T", spellName, client);
   menu.SetTitle(title);
 
   char buffer[200];
@@ -247,7 +247,7 @@ public void CombinationMenu(int client, int spellSlot) {
   menu.ExitBackButton = true;
 
   char title[128];
-  char spellname[128];
+  char[] spellName;
   int spellComponents[3];
 
   int spell = Player(client).hero.GetSpell(spellSlot);
@@ -260,7 +260,7 @@ public void CombinationMenu(int client, int spellSlot) {
     menu.AddItem("CombinationChangeMenu", orbName);
   }
 
-  Format(title, sizeof(title), "%T", spellname, client);
+  Format(title, sizeof(title), "%T", spellName, client);
   menu.SetTitle(title);
 
   menu.Display(client,MENU_TIME_FOREVER);
