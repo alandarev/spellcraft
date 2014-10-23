@@ -63,7 +63,7 @@ public RunSpell(client,spellid,rank)
 
 
 }
-public GetSpellName(spellid,spellName)
+public GetSpellName(spellid,String:spellName[])
 {
   if(spellid == 1)
     Format(spellName,sizeof(spellName),"%T","fireball name");
