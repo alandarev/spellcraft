@@ -65,7 +65,7 @@ public RunSpell(client,spellid,rank)
 }
 public GetSpellName(spellid)
 {
-  char spellname[255];
+  char spellname[30];
   if(spellid == 1)
     Format(spellname,sizeof(spellname),"%T","fireball name");
   else
