@@ -2,9 +2,6 @@
 * Hero "Class" for Spellcraft
 */
 
-#define MAXHEROES 10
-#define MAXHEROSPELLS 4
-
 // Array size to fit all the players multiplied by maximum heroes they can have
 #define PHMAX MAXPLAYERS * MAXHEROES
 

@@ -24,7 +24,7 @@ public Action:SC_SpellCmd(client,args)
 {
    if (args < 1)
    {
-		ReplyToCommand(client, "[WC] Usage: spell <spell ID>");
+		ReplyToCommand(client, "[SC] Usage: spell <spell ID>");
 		return Plugin_Handled;
    }
    decl String:Sspell[5];
@@ -33,7 +33,7 @@ public Action:SC_SpellCmd(client,args)
    char maxspell[5] = IntToString(MAXHEROSPELLS);
    if((spell>=MAXHEROSPELLS)||(spell<=0))
    {
-		ReplyToCommand(client, "[WC] spell must be 1-%s",maxspell);
+		ReplyToCommand(client, "[SC] spell must be 1-%s",maxspell);
 		return Plugin_Handled;
    }
 
@@ -48,7 +48,7 @@ public Action:SC_SpellCmd(client,args)
 bool:TryCast(client, spellid, rank)  {
 
   char trans[128];
-  new Float:timeleft=GetCDSpell(client,spellid);
+  float timeleft=GetCDSpell(client,spellid);
   if(timeleft > 0.0)  {
     Format(trans,sizeof(trans),"%T","spell cooldown",timeleft);
     CPrintToChat(client, "%s", trans);
@@ -60,7 +60,7 @@ bool:TryCast(client, spellid, rank)  {
   return true;
 }
 
-stock RunSpell(client,spellid,rank);
+public RunSpell(client,spellid,rank)
 {
   if(spellid == 1)
     Spell_Fireball(client, rank);
@@ -69,12 +69,12 @@ stock RunSpell(client,spellid,rank);
 
 }
 
-stock SetCdSpell(client,spellid,Float:cd)
+public SetCdSpell(client,spellid,Float:cd)
 {
   ClientCDSpells[client][spellid]=GetTickedTime()+cd;
 }
 
-stock GetCdSpell(client,spellid)
+public GetCdSpell(client,spellid)
 {
   float timeleft = ClientCDSpells[client][spellid] - GetTickedTime();
   return timeleft;

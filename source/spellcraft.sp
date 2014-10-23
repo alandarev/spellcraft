@@ -15,6 +15,8 @@
 
 #pragma semicolon 1
 #define SPELLCRAFT_VERSION "0.1"
+#define MAXHEROES 10
+#define MAXHEROSPELLS 4
 
 /**
  * External libraries
@@ -37,8 +39,8 @@
 #include "spellcraft/damages"
 #include "spellcraft/configuration"
 #include "spellcraft/orbs"
-#include "spellcraft/spells"
 #include "spellcraft/hero"
+#include "spellcraft/spells"
 #include "spellcraft/player"
 #include "spellcraft/database"
 #include "spellcraft/scmenus"
