@@ -73,6 +73,10 @@ public GetSpellName(spellid)
   
   return spellname;
 }
+public GetComponent(any index)
+{
+  return __components[index];
+}
 
 
 

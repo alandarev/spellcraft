@@ -188,7 +188,7 @@ public void SpellMenu(int client, int spellSlot) {
   new String:spellName[30];
 
   int spell = Player(client).hero.GetSpell(spellSlot);
-  spellName = GetSpellName(spell);
+  spellName[30] = GetSpellName(spell);
 
   Format(title, sizeof(title), "%T", spellName, client);
   menu.SetTitle(title);
@@ -251,9 +251,9 @@ public void CombinationMenu(int client, int spellSlot) {
   int spellComponents[3];
 
   int spell = Player(client).hero.GetSpell(spellSlot);
-  spellName = GetSpellName(spell);
+  spellName[30] = GetSpellName(spell);
   for(int i=0;i<3;i++){
-    spellComponents[i]=spell.GetComponent(i);
+    spellComponents[i]=GetComponent(i);
     char orbName[100];
     GetOrbName(spellComponents[i],orbName,sizeof(orbName));
     Format(orbName,sizeof(orbName),"%T", orbName, client);
