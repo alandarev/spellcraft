@@ -22,27 +22,30 @@ methodmap Spell {
 
 public Action:SC_SpellCmd(client,args)
 {
-   if (args < 1)
-   {
+  if (args < 1)
+  {
 		ReplyToCommand(client, "[SC] Usage: spell <spell ID>");
 		return Plugin_Handled;
-   }
-   decl String:Sspell[5];
-   GetCmdArg(1, Sspell, sizeof(Sspell));
-   new spell=StringToInt(Sspell);
-   char[] maxspell = IntToString(MAXHEROSPELLS);
-   if((spell>=MAXHEROSPELLS)||(spell<=0))
-   {
-		ReplyToCommand(client, "[SC] spell must be 1-%s",maxspell);
+  }
+  decl String:Sspell[5];
+  GetCmdArg(1, Sspell, sizeof(Sspell));
+  new spell=StringToInt(Sspell);
+  
+  new String:smaxspell[20];
+  IntToString(MAXHEROSPELLS, smaxspell, 20);
+  
+  if((spell>=MAXHEROSPELLS)||(spell<=0))
+  {
+		ReplyToCommand(client, "[SC] spell must be 1-%s",smaxspell);
 		return Plugin_Handled;
-   }
+  }
 
-   new spellid=Hero.GetSpell(spell); //Gets the spell in slot 'spell'
-   new rank=Hero.GetSpellRank(spell); //Gets the spell's rank
+  new spellid=Hero.GetSpell(spell); //Gets the spell in slot 'spell'
+  new rank=Hero.GetSpellRank(spell); //Gets the spell's rank
 
-   TryCast(client, spellid, rank); //Attempts to cast the given spell based on its ID
+  TryCast(client, spellid, rank); //Attempts to cast the given spell based on its ID
 
-   return Plugin_Handled;
+  return Plugin_Handled;
 }
 
 public SetCdSpell(client,spellid,Float:cd)
