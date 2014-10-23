@@ -43,7 +43,7 @@ public GetCDSpell(client,spellid)
 bool:TryCast(client, spellid, rank)  {
 
   char trans[128];
-  float timeleft = GetCDSpell(client,spellid);
+  float timeleft = float(GetCDSpell(client,spellid));
   if(timeleft > 0.0)  {
     Format(trans,sizeof(trans),"%T","spell cooldown",timeleft);
     CPrintToChat(client, "%s", trans);
@@ -71,7 +71,7 @@ public GetSpellName(spellid)
   else
     Format(spellName,sizeof(spellName),"%T","no spell");
   
-  return spellname;
+  return spellName;
 }
 public GetComponent(any index)
 {
