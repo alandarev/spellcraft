@@ -40,8 +40,8 @@
 #include "spellcraft/configuration"
 #include "spellcraft/orbs"
 #include "spellcraft/hero"
-#include "spellcraft/spells"
 #include "spellcraft/player"
+#include "spellcraft/spells"
 #include "spellcraft/database"
 #include "spellcraft/scmenus"
 
