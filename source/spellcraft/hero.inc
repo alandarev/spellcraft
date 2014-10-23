@@ -68,8 +68,8 @@ methodmap Hero  {
     }
   }
 
-  public Spell GetSpell(int slot) {
-    return Spell:__hero_spells[this][slot][0];
+  public int GetSpell(int slot) {
+    return __hero_spells[this][slot][0];
   }
   public void SetSpell(int slot, int id)  {
     __hero_spells[this][slot][0] = id;

@@ -40,8 +40,8 @@ public Action:SC_SpellCmd(client,args)
 		return Plugin_Handled;
   }
 
-  new spellid=Hero.GetSpell(spell); //Gets the spell in slot 'spell'
-  new rank=Hero.GetSpellRank(spell); //Gets the spell's rank
+  new spellid=hero.GetSpell(spell); //Gets the spell in slot 'spell'
+  new rank=hero.GetSpellRank(spell); //Gets the spell's rank
 
   TryCast(client, spellid, rank); //Attempts to cast the given spell based on its ID
 

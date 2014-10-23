@@ -145,7 +145,7 @@ public void HeroMenu(int client) {
   for (int i=0; i<MAXSPELLS; i++) {
     char sI[5];
     IntToString(i, sI, sizeof(sI));
-    Spell spell = hero.GetSpell(0);
+    int spell = hero.GetSpell(0);
     spell.GetName(spellName, sizeof(spellName));
     int rank = hero.GetSpellRank(0);
 
@@ -186,7 +186,7 @@ public void SpellMenu(int client, int spellSlot) {
   char title[128];
   char spellname[128];
 
-  Spell spell = Player(client).hero.GetSpell(spellSlot);
+  int spell = Player(client).hero.GetSpell(spellSlot);
   spell.GetName(spellname,sizeof(spellname));
 
   Format(title, sizeof(title), "%T", spellname, client);
@@ -249,7 +249,7 @@ public void CombinationMenu(int client, int spellSlot) {
   char spellname[128];
   int spellComponents[3];
 
-  Spell spell = Player(client).hero.GetSpell(spellSlot);
+  int spell = Player(client).hero.GetSpell(spellSlot);
   spell.GetName(spellname,sizeof(spellname));
   for(int i=0;i<3;i++){
     spellComponents[i]=spell.GetComponent(i);
