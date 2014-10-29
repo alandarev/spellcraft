@@ -18,6 +18,8 @@
 #define MAXHEROES 10
 #define MAXHEROSPELLS 4
 
+new g_RoundCount=-2;
+
 /**
  * External libraries
  */
@@ -36,6 +38,7 @@
 /**
  * Engine
  */
+#include "spellcraft/sc"
 #include "spellcraft/damages"
 #include "spellcraft/configuration"
 #include "spellcraft/orbs"
