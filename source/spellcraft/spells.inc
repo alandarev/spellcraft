@@ -36,7 +36,7 @@ public SetCdSpell(client,spellid,Float:cd)
 
 public GetCDSpell(client,spellid)
 {
-  float time = ClientCDSpells[client][spellid] - GetTickedTime();
+  float time = float(ClientCDSpells[client][spellid]) - GetTickedTime();
   return time;
 }
 
