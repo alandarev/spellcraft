@@ -83,27 +83,8 @@ stock setTakeDamage(entity, type){
 }
 
 
-/*
-stock CreateMoveSpell(client,Float:distance=20.0,frequency=0.1)
-{
 
-  new ent = CreateMovingEntity(client);
-
-  decl Float:location[3];
-  GetClientAbsOrigin(client, location);
-  new Handle:datapack = CreateDataPack();
-  WritePackCell(datapack, client);
-  WritePackCell(datapack, ent);
-  WritePackCell(datapack, GetClientTeam(client));
-  WritePackFloat(datapack, distance); //The hitbox of the spell, default is 20
-  WritePackFloat(datapack, location[0]);
-  WritePackFloat(datapack, location[1]);
-  WritePackFloat(datapack, location[2]);
-  WritePackCell(datapack, g_RoundCount);
-  CreateTimer(frequency, MoveSpellThink, datapack, TIMER_REPEAT | TIMER_FLAG_NO_MAPCHANGE | TIMER_DATA_HNDL_CLOSE);
-}
-
-public Action:MoveSpellThink(Handle:timer,Handle:datapack)
+public Action:MoveSpellFireBall(Handle:timer,Handle:datapack)
 {
   decl Float:loc[3];
   ResetPack(datapack);
@@ -146,7 +127,6 @@ public Action:MoveSpellThink(Handle:timer,Handle:datapack)
   GetEntPropVector(ent, Prop_Send, "m_vecOrigin", entpos);
 
 
-
   new friends[65], enemies[65];
   new friends_amount, enemies_amount;
 
@@ -177,11 +157,8 @@ public Action:MoveSpellThink(Handle:timer,Handle:datapack)
     }
     WritePackCell(datapack, target);
 
+    //Do stuff to ally here
 
-    GetClientAbsOrigin(target, location);
-    location[2]+=40;
-    if(target!=client)
-      VS_BeamPoints(entpos, location, g_ef_orangelight1, g_ef_orangelight1, 0, 0, 0.50, 6.00, 6.00, 0, 0.00, {255, 155, 15, 255}, 160);
   }
 
   // Enemy targeting
@@ -197,15 +174,10 @@ public Action:MoveSpellThink(Handle:timer,Handle:datapack)
     if (found)  {
       continue; // Don't heal/damage twice
     }
-    // Add it to old targets for future ticks
     WritePackCell(datapack, target);
-
-    wcGetTalentInfo(9,2,2,3,client,"multi",line);
-    dmg = RoundToNearest(float(dmg)*(1.0+StringToFloat(line)));
-
-    GetClientAbsOrigin(target, location);
-    location[2]+=40;
-    VS_BeamPoints(entpos, location, g_ef_orangelight1, g_ef_orangelight1, 0, 0, 0.50, 6.00, 6.00, 0, 0.00, {255, 255, 255, 255}, 160);
+    
+    //Do stuff to enemy here
+    
   }
 
   return Plugin_Continue;
@@ -214,7 +186,7 @@ public Action:MoveSpellThink(Handle:timer,Handle:datapack)
 
 }
 
-stock CreateMovingEntity(client)  {
+stock CreateMovingEntity(client,model[256])  {
 
   decl Float:clienteyeangle[3], Float:anglevector[3], Float:clienteyeposition[3], Float:resultposition[3], entity;
   GetClientEyeAngles(client, clienteyeangle);
@@ -244,7 +216,7 @@ stock CreateMovingEntity(client)  {
 
   SetEntityMoveType(entity, MOVETYPE_FLY);
   SetEntPropEnt(entity, Prop_Send, "m_hOwnerEntity", client);
-  SetEntityModel(entity, "models/effects/combineball.mdl");
+  SetEntityModel(entity, model);
   TeleportEntity(entity, resultposition, clienteyeangle, anglevector);
 
   new gascloud = CreateEntityByName("env_rockettrail");
@@ -329,10 +301,27 @@ stock KillMovingEntity(entity){
 
 
 }
-*/
+
 
 
 public Spell_Fireball(client, rank)
 {
-  PrintToChatAll("Test, rank is %i",rank);
+  PrintToChatAll("Fireball, rank is %i",rank);
+  
+  new Float:distance = 20.0;
+  new Float:frequency = 0.10;
+  new ent = CreateMovingEntity(client,"models/effects/combineball.mdl");
+
+  decl Float:location[3];
+  GetClientAbsOrigin(client, location);
+  new Handle:datapack = CreateDataPack();
+  WritePackCell(datapack, client);
+  WritePackCell(datapack, ent);
+  WritePackCell(datapack, GetClientTeam(client));
+  WritePackFloat(datapack, distance); //The hitbox of the spell, default is 20
+  WritePackFloat(datapack, location[0]);
+  WritePackFloat(datapack, location[1]);
+  WritePackFloat(datapack, location[2]);
+  WritePackCell(datapack, g_RoundCount);
+  CreateTimer(frequency, MoveSpellFireBall, datapack, TIMER_REPEAT | TIMER_FLAG_NO_MAPCHANGE | TIMER_DATA_HNDL_CLOSE);
 }
