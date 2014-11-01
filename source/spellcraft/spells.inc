@@ -1,7 +1,7 @@
 int __components[3]={0,1,2};
 
 //Spell models
-new g_ef_combineball = PrecacheModel("models/Effects/combineball.mdl");
+new g_ef_combineball = PrecacheModel("models/effects/combineball.mdl");
 
 
 public Action:SC_SpellCmd(client,args)
@@ -198,7 +198,7 @@ public Spell_Fireball(client, rank)
   
   new Float:distance = 20.0;
   new Float:frequency = 0.10;
-  new ent = CreateMovingEntity(client,g_ef_combineball);
+  new ent = CreateMovingEntity(client,"models/effects/combineball.mdl");
 
   decl Float:location[3];
   GetClientAbsOrigin(client, location);

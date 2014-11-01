@@ -1,4 +1,4 @@
-stock CreateMovingEntity(client,model)  {
+stock CreateMovingEntity(client,String:model[256])  {
 
   decl Float:clienteyeangle[3], Float:anglevector[3], Float:clienteyeposition[3], Float:resultposition[3], entity;
   GetClientEyeAngles(client, clienteyeangle);
@@ -28,6 +28,7 @@ stock CreateMovingEntity(client,model)  {
 
   SetEntityMoveType(entity, MOVETYPE_FLY);
   SetEntPropEnt(entity, Prop_Send, "m_hOwnerEntity", client);
+  //SetEntityModel(entity, "models/effects/combineball.mdl");
   SetEntityModel(entity, model);
   TeleportEntity(entity, resultposition, clienteyeangle, anglevector);
 
