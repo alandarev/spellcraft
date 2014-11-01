@@ -113,7 +113,31 @@ stock KillMovingEntity(entity){
 
 
 }
+public Float:GetDistanceBetween(const Float:startvec[3],const Float:endvec[3])
+{
+  return SquareRoot((startvec[0]-endvec[0])*(startvec[0]-endvec[0])+(startvec[1]-endvec[1])*(startvec[1]-endvec[1])+(startvec[2]-endvec[2])*(startvec[2]-endvec[2]));
+}
+stock bool:IsClearPath(Float:loc[3],Float:loc2[3],target=-1)
+{
+  decl Float:vector[3],Float:angles[3];
+  MakeVectorFromPoints(loc, loc2, vector);
+  GetVectorAngles(vector, angles);
 
+  TR_TraceRayFilter(loc, angles, MASK_SOLID, RayType_Infinite,AimTargetFilter);
+  new Float:endvec[3];
+  TR_GetEndPosition(endvec);
+  new endEntity = TR_GetEntityIndex();
+  if((target >= 0) && (endEntity == target))
+  return true;
+  //now check if distance of ray is more or equal to distance between players
+  //if so then we can say there is no wall between
+  //That's because of the bug on linux servers :(
+  new Float:rayDistance = GetDistanceBetween(loc, endvec);
+  new Float:targetDistance = GetDistanceBetween(loc, loc2);
+  if(rayDistance < (targetDistance-35.0))
+  return false; //Then there is a solid object between
+  return true;
+}
 stock GetNearClients(const String:matchstr[],Float:location[3],clients[],Float:distance, bool:ignoreWall=true )
 {
   new count=0;
