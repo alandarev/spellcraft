@@ -1,3 +1,5 @@
+new ClientTracer;
+
 public OnMapStart()
 {
   g_RoundCount=-1;

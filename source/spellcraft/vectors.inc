@@ -1,4 +1,4 @@
-stock CreateMovingEntity(client,model[256])  {
+stock CreateMovingEntity(client,String:model[256])  {
 
   decl Float:clienteyeangle[3], Float:anglevector[3], Float:clienteyeposition[3], Float:resultposition[3], entity;
   GetClientEyeAngles(client, clienteyeangle);
@@ -175,17 +175,6 @@ public bool:WallTargetFilter(entity,mask) {
   return !(entity>0 && entity <= GetMaxClients());
 }
 
-
-public bool:NoPlayerFilter(entity,mask)
-{
-  return !(entity <= GetMaxClients() && entity > 0);
-}
-
-public bool:AimTargetFilter2(entity,mask)
-{
-  ReplyToCommand(dAimRunner,"filter found entity %i", entity);
-  return !(entity==ClientTracer);
-}
 stock GetNearClients(const String:matchstr[],Float:location[3],clients[],Float:distance, bool:ignoreWall=true )
 {
   new count=0;
