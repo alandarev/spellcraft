@@ -1,8 +1,5 @@
 int __components[3]={0,1,2};
 
-//Spell models
-new g_ef_combineball = PrecacheModel("models/effects/combineball.mdl");
-
 
 public Action:SC_SpellCmd(client,args)
 {
