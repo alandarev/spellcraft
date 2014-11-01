@@ -138,6 +138,54 @@ stock bool:IsClearPath(Float:loc[3],Float:loc2[3],target=-1)
   return false; //Then there is a solid object between
   return true;
 }
+stock bool:IsEntityCollidable(entity, bool:includeplayer = true, bool:includehostage = true, bool:includeprojectile = true){
+
+  decl String:classname[64];
+  GetEdictClassname(entity, classname, 64);
+
+  if((StrEqual(classname, "player", false) && includeplayer) || (StrEqual(classname, "hostage_entity", false) && includehostage)
+      ||StrContains(classname, "physics", false) != -1 || StrContains(classname, "prop", false) != -1
+      || StrContains(classname, "door", false)  != -1 || StrContains(classname, "weapon", false)  != -1
+      || StrContains(classname, "break", false)  != -1 || ((StrContains(classname, "projectile", false)  != -1) && includeprojectile)
+      || StrContains(classname, "brush", false)  != -1 || StrContains(classname, "button", false)  != -1
+      || StrContains(classname, "physbox", false)  != -1 || StrContains(classname, "plat", false)  != -1
+      || StrEqual(classname, "func_conveyor", false) || StrEqual(classname, "func_fish_pool", false)
+      || StrEqual(classname, "func_guntarget", false) || StrEqual(classname, "func_lod", false)
+      || StrEqual(classname, "func_monitor", false) || StrEqual(classname, "func_movelinear", false)
+      || StrEqual(classname, "func_reflective_glass", false) || StrEqual(classname, "func_rotating", false)
+      || StrEqual(classname, "func_tanktrain", false) || StrEqual(classname, "func_trackautochange", false)
+      || StrEqual(classname, "func_trackchange", false) || StrEqual(classname, "func_tracktrain", false)
+      || StrEqual(classname, "func_train", false) || StrEqual(classname, "func_traincontrols", false)
+      || StrEqual(classname, "func_vehicleclip", false) || StrEqual(classname, "func_traincontrols", false)
+      || StrEqual(classname, "func_water", false) || StrEqual(classname, "func_water_analog", false)){
+
+    return true;
+
+  }
+
+  return false;
+
+}
+public bool:AimTargetFilter(entity,mask)
+{
+  return !(entity==ClientTracer);
+}
+
+public bool:WallTargetFilter(entity,mask) {
+  return !(entity>0 && entity <= GetMaxClients());
+}
+
+
+public bool:NoPlayerFilter(entity,mask)
+{
+  return !(entity <= GetMaxClients() && entity > 0);
+}
+
+public bool:AimTargetFilter2(entity,mask)
+{
+  ReplyToCommand(dAimRunner,"filter found entity %i", entity);
+  return !(entity==ClientTracer);
+}
 stock GetNearClients(const String:matchstr[],Float:location[3],clients[],Float:distance, bool:ignoreWall=true )
 {
   new count=0;
