@@ -44,6 +44,7 @@ new g_RoundCount=-2;
 #include "spellcraft/orbs"
 #include "spellcraft/hero"
 #include "spellcraft/player"
+#include "spellcraft/vectors"
 #include "spellcraft/spells"
 #include "spellcraft/database"
 #include "spellcraft/scmenus"
