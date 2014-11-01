@@ -1,4 +1,4 @@
-stock CreateMovingEntity(client,String:model[256])  {
+stock CreateMovingEntity(client,model)  {
 
   decl Float:clienteyeangle[3], Float:anglevector[3], Float:clienteyeposition[3], Float:resultposition[3], entity;
   GetClientEyeAngles(client, clienteyeangle);
