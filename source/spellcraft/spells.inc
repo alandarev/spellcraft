@@ -7,7 +7,7 @@ public Action:SC_SpellCmd(client,args)
   {
 		ReplyToCommand(client, "[SC] Usage: spell <spell ID>");
 		return Plugin_Handled;
-  }
+  } 
   decl String:Sspell[5];
   GetCmdArg(1, Sspell, sizeof(Sspell));
   new spell=StringToInt(Sspell);
